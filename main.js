@@ -8,13 +8,11 @@ const sanitize = (value) => String(value || "").trim();
 
 
 const listFromKeywords = (keywords) => {
-  if (!keywords) return "";
-  const items = keywords
+  if (!keywords) return [];
+  return keywords
     .split(",")
     .map((item) => item.trim())
     .filter(Boolean);
-  if (items.length === 0) return "";
-  return `<ul>${items.map((item) => `<li>${item}</li>`).join("")}</ul>`;
 };
 
 const lengthBlocks = {
@@ -41,10 +39,10 @@ const rotate = (arr, offset) => {
 const paragraphSet = (count, texts, seed) => {
   const rotated = rotate(texts, hash(seed));
   const picks = rotated.slice(0, count);
-  return picks.map((item) => `<p>${item}</p>`).join("");
+  return picks;
 };
 
-const buildHtml = (data) => {
+const buildText = (data) => {
   const {
     clinic,
     service,
@@ -55,6 +53,7 @@ const buildHtml = (data) => {
     length,
     keywords,
     location,
+    style,
   } = data;
 
   const locale = location ? `${location} 지역` : "지역";
@@ -123,71 +122,135 @@ const buildHtml = (data) => {
     `관리 없이 결과가 오래 유지된다는 기대는 현실과 차이가 있을 수 있습니다`,
   ];
 
-  const faq = `
-    <h2>자주 묻는 질문</h2>
-    <h3>Q1. 통증이나 회복 기간은 어느 정도인가요?</h3>
-    <p>개인차가 있어 예상 회복 흐름과 일상 복귀 시점을 미리 확인하는 것이 좋습니다.</p>
-    <h3>Q2. 몇 회 정도 받아야 하나요?</h3>
-    <p>상태와 목표에 따라 횟수가 달라질 수 있어 계획을 세우는 과정이 필요합니다.</p>
-    <h3>Q3. 부작용이 걱정돼요.</h3>
-    <p>가능한 위험과 예방 방법을 충분히 확인하고, 사후 관리 체계를 살펴보는 것이 중요합니다.</p>
-  `;
+  const sections = [];
+  const addTitle = (text) => sections.push(text);
+  const addLine = (text) => sections.push(text);
+  const addLines = (lines) => lines.forEach((line) => sections.push(line));
+  const addList = (title, items) => {
+    sections.push(title);
+    items.forEach((item) => sections.push(`- ${item}`));
+  };
 
-  const html = `
-    <article>
-      <h1>${topic}</h1>
-      <p><strong>${clinic}</strong> | ${service}</p>
-      <p><em>키워드</em>: ${primaryKeyword}${location ? `, ${location}` : ""}</p>
-      <h2>한눈에 보는 요약</h2>
-      <ul>
-        <li>${primaryKeyword}는 개인 상태에 맞춘 계획 수립이 핵심입니다.</li>
-        <li>효과와 회복, 유지 기준을 균형 있게 살펴보는 것이 중요합니다.</li>
-        <li>관리 습관이 결과 유지에 큰 영향을 줍니다.</li>
-      </ul>
+  addTitle(topic);
+  addLine(`${clinic} | ${service}`);
+  addLine(`핵심 키워드: ${primaryKeyword}${location ? `, ${location}` : ""}`);
+  addLine("");
 
-      <h2>읽기 전에</h2>
-      ${paragraphSet(1, hookTexts, topic)}
-      ${paragraphSet(lengthCount, introTexts, topic)}
+  addList("한눈에 보는 요약", [
+    `${primaryKeyword}는 개인 상태에 맞춘 계획 수립이 핵심입니다.`,
+    `효과와 회복, 유지 기준을 균형 있게 살펴보는 것이 중요합니다.`,
+    `관리 습관이 결과 유지에 큰 영향을 줍니다.`,
+  ]);
+  addLine("");
 
-      <h2>이 글에서 정리하는 내용</h2>
-      <ul>
-        <li>${primaryKeyword} 선택 기준과 체크 포인트</li>
-        <li>적합 대상과 주의가 필요한 경우</li>
-        <li>진행 흐름과 관리 팁</li>
-      </ul>
+  const introBlock = [
+    ...paragraphSet(1, hookTexts, topic),
+    ...paragraphSet(lengthCount, introTexts, topic),
+  ];
+  addLines(["읽기 전에", ...introBlock, ""]);
 
-      <h2>${primaryKeyword} 선택 기준</h2>
-      ${paragraphSet(lengthCount, overviewTexts, primaryKeyword)}
-      ${keywordList ? `<h3>연관 키워드</h3>${keywordList}` : ""}
+  addList("이 글에서 정리하는 내용", [
+    `${primaryKeyword} 선택 기준과 체크 포인트`,
+    `적합 대상과 주의가 필요한 경우`,
+    `진행 흐름과 관리 팁`,
+  ]);
+  addLine("");
 
-      <h2>자주 생기는 오해</h2>
-      ${paragraphSet(Math.max(2, lengthCount - 1), mythTexts, topic)}
+  const overviewBlock = paragraphSet(lengthCount, overviewTexts, primaryKeyword);
+  addLines([`${primaryKeyword} 선택 기준`, ...overviewBlock, ""]);
+  if (keywordList.length) {
+    addList("연관 키워드", keywordList);
+    addLine("");
+  }
 
-      <h2>적합 대상 체크</h2>
-      ${paragraphSet(Math.max(2, lengthCount - 1), candidateTexts, audience)}
-      <h3>주의가 필요한 경우</h3>
-      ${paragraphSet(Math.max(2, lengthCount - 1), cautionTexts, clinic)}
+  const mythBlock = paragraphSet(Math.max(2, lengthCount - 1), mythTexts, topic);
+  addLines(["자주 생기는 오해", ...mythBlock, ""]);
 
-      <h2>진행 흐름과 체크리스트</h2>
-      ${paragraphSet(Math.max(2, lengthCount - 1), processTexts, service)}
-      <ul>
-        <li>현재 고민과 원하는 개선점을 구체적으로 정리합니다.</li>
-        <li>적합도와 예상 결과를 확인합니다.</li>
-        <li>관리 일정과 주의사항을 꼼꼼히 체크합니다.</li>
-      </ul>
-      <h3>간단 체크리스트</h3>
-      ${paragraphSet(Math.max(2, lengthCount - 1), checklistTexts, treatment)}
+  const candidateBlock = paragraphSet(Math.max(2, lengthCount - 1), candidateTexts, audience);
+  addLines(["적합 대상 체크", ...candidateBlock, ""]);
+  const cautionBlock = paragraphSet(Math.max(2, lengthCount - 1), cautionTexts, clinic);
+  addLines(["주의가 필요한 경우", ...cautionBlock, ""]);
 
-      <h2>사후 관리 및 유지 팁</h2>
-      ${paragraphSet(lengthCount, careTexts, clinic)}
+  const processBlock = paragraphSet(Math.max(2, lengthCount - 1), processTexts, service);
+  addLines(["진행 흐름과 체크리스트", ...processBlock]);
+  addList("체크 포인트", [
+    "현재 고민과 원하는 개선점을 구체적으로 정리합니다.",
+    "적합도와 예상 결과를 확인합니다.",
+    "관리 일정과 주의사항을 꼼꼼히 체크합니다.",
+  ]);
+  const checklistBlock = paragraphSet(Math.max(2, lengthCount - 1), checklistTexts, treatment);
+  addLines(["간단 체크리스트", ...checklistBlock, ""]);
 
-      ${faq}
+  const careBlock = paragraphSet(lengthCount, careTexts, clinic);
+  addLines(["사후 관리 및 유지 팁", ...careBlock, ""]);
 
-      <p><strong>주의</strong>: 본 글은 일반적인 정보 제공 목적이며, 진단 및 치료는 의료진 상담 후 결정되어야 합니다.</p>
-    </article>
-  `.trim();
+  const faqLines = [
+    "자주 묻는 질문",
+    "Q1. 통증이나 회복 기간은 어느 정도인가요?",
+    "개인차가 있어 예상 회복 흐름과 일상 복귀 시점을 미리 확인하는 것이 좋습니다.",
+    "Q2. 몇 회 정도 받아야 하나요?",
+    "상태와 목표에 따라 횟수가 달라질 수 있어 계획을 세우는 과정이 필요합니다.",
+    "Q3. 부작용이 걱정돼요.",
+    "가능한 위험과 예방 방법을 충분히 확인하고, 사후 관리 체계를 살펴보는 것이 중요합니다.",
+    "",
+    "주의: 본 글은 일반적인 정보 제공 목적이며, 진단 및 치료는 의료진 상담 후 결정되어야 합니다.",
+  ];
 
-  return html;
+  let draft = sections.join("\n");
+
+  if (style === "qa") {
+    draft = [
+      topic,
+      `${clinic} | ${service}`,
+      `핵심 키워드: ${primaryKeyword}${location ? `, ${location}` : ""}`,
+      "",
+      "Q. 이 글에서 무엇을 알 수 있나요?",
+      `A. ${primaryKeyword} 선택 기준, 적합 대상, 진행 흐름, 관리 팁을 정리합니다.`,
+      "",
+      "Q. 어떤 기준으로 접근하면 좋을까요?",
+      ...overviewBlock.map((line) => `A. ${line}`),
+      "",
+      "Q. 이런 경우는 주의가 필요할까요?",
+      ...cautionBlock.map((line) => `A. ${line}`),
+      "",
+      "Q. 진행 흐름은 어떻게 되나요?",
+      ...processBlock.map((line) => `A. ${line}`),
+      "",
+      "Q. 관리 팁은 무엇이 있나요?",
+      ...careBlock.map((line) => `A. ${line}`),
+      "",
+      "주의: 본 글은 일반적인 정보 제공 목적이며, 진단 및 치료는 의료진 상담 후 결정되어야 합니다.",
+    ].join("\n");
+  }
+
+  if (style === "consult") {
+    draft = [
+      topic,
+      `${clinic} | ${service}`,
+      `핵심 키워드: ${primaryKeyword}${location ? `, ${location}` : ""}`,
+      "",
+      "상담 요약",
+      ...introBlock,
+      "",
+      "현재 상태 점검",
+      ...candidateBlock,
+      ...cautionBlock,
+      "",
+      "결정 기준",
+      ...overviewBlock,
+      "",
+      "진행 플랜",
+      ...processBlock,
+      ...checklistBlock,
+      "",
+      "사후 관리",
+      ...careBlock,
+      "",
+      "주의: 본 글은 일반적인 정보 제공 목적이며, 진단 및 치료는 의료진 상담 후 결정되어야 합니다.",
+    ].join("\n");
+  }
+
+  return draft.trim();
 };
 
 const render = (html) => {
@@ -202,7 +265,7 @@ form.addEventListener("submit", (event) => {
     htmlOutput.value = "클리닉명, 시술/수술명, 콘텐츠 주제는 필수 입력입니다.";
     return;
   }
-  const html = buildHtml({
+  const text = buildText({
     clinic: sanitize(data.clinic),
     service: sanitize(data.service),
     treatment: sanitize(data.treatment),
@@ -212,8 +275,9 @@ form.addEventListener("submit", (event) => {
     length: sanitize(data.length),
     keywords: sanitize(data.keywords),
     location: sanitize(data.location),
+    style: sanitize(data.style),
   });
-  render(html);
+  render(text);
 });
 
 resetButton.addEventListener("click", () => {
@@ -226,17 +290,17 @@ copyButton.addEventListener("click", async () => {
   await navigator.clipboard.writeText(htmlOutput.value);
   copyButton.textContent = "복사됨";
   setTimeout(() => {
-    copyButton.textContent = "HTML 복사";
+    copyButton.textContent = "텍스트 복사";
   }, 1400);
 });
 
 downloadButton.addEventListener("click", () => {
   if (!htmlOutput.value) return;
-  const blob = new Blob([htmlOutput.value], { type: "text/html;charset=utf-8" });
+  const blob = new Blob([htmlOutput.value], { type: "text/plain;charset=utf-8" });
   const url = URL.createObjectURL(blob);
   const anchor = document.createElement("a");
   anchor.href = url;
-  anchor.download = "clinic-blog-draft.html";
+  anchor.download = "clinic-blog-draft.txt";
   anchor.click();
   URL.revokeObjectURL(url);
 });

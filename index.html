@@ -92,6 +92,14 @@
             </select>
           </div>
           <div class="field">
+            <label for="style">원고 스타일</label>
+            <select id="style" name="style">
+              <option value="info">정보형(칼럼 톤)</option>
+              <option value="qa">Q&A형</option>
+              <option value="consult">상담 정리형</option>
+            </select>
+          </div>
+          <div class="field">
             <label for="length">분량</label>
             <div class="radio-group">
               <label><input type="radio" name="length" value="short" />간단</label>
@@ -120,12 +128,12 @@
 
       <section class="panel">
         <div class="panel-title">
-          <h2>HTML 원고</h2>
+          <h2>원고 텍스트</h2>
           <span>복사 후 블로그 편집기에 그대로 붙여 넣으세요.</span>
         </div>
         <div class="panel-actions">
-          <button id="copy" class="ghost" type="button">HTML 복사</button>
-          <button id="download" class="primary" type="button">HTML 다운로드</button>
+          <button id="copy" class="ghost" type="button">텍스트 복사</button>
+          <button id="download" class="primary" type="button">TXT 다운로드</button>
         </div>
         <textarea id="htmlOutput" class="code" readonly></textarea>
       </section>
