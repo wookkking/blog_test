@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>클리닉 블로그 원고 자동 생성기</title>
+    <title>클리닉 콘텐츠 매뉴얼 생성기</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -14,47 +14,28 @@
   </head>
   <body>
     <div class="bg">
-      <div class="glow g1"></div>
-      <div class="glow g2"></div>
-      <div class="glow g3"></div>
       <div class="grid"></div>
     </div>
 
     <header class="hero">
       <div class="hero-inner">
-        <nav class="topline">
-          <div class="brand">
-            <span class="brand-mark"></span>
-            <span>MED DRAFT STUDIO</span>
-          </div>
-          <div class="top-actions">
-            <span>의료광고 준수 가이드</span>
-            <span>템플릿 라이브러리</span>
-          </div>
-        </nav>
-        <div class="badge">성형외과 · 피부과 전용</div>
-        <h1>클리닉 블로그 원고 자동 생성기</h1>
-        <p>
-          진료 특성에 맞춘 구조로 빠르게 원고를 만들고, HTML로
-          바로 내보낼 수 있습니다.
-        </p>
-        <div class="hero-meta">
-          <div>SEO 친화 구조</div>
-          <div>의학적 주의 문구 포함</div>
-          <div>다운로드/복사 지원</div>
+        <div class="brand">
+          <span class="brand-mark"></span>
+          <span>MED CONTENT LAB</span>
         </div>
+        <h1>클리닉 콘텐츠 매뉴얼 생성기</h1>
         <div class="hero-stats">
           <div>
-            <strong>3분 내 완성</strong>
-            <span>기본 템플릿 구성</span>
+            <strong>전문 구조 자동화</strong>
+            <span>의학 정보 흐름 최적화</span>
           </div>
           <div>
-            <strong>실제 상담 흐름</strong>
-            <span>환자 질문 기반 구조</span>
+            <strong>가독성 중심 작성</strong>
+            <span>섹션별 핵심 요약</span>
           </div>
           <div>
-            <strong>브랜드 톤 유지</strong>
-            <span>통일된 문체 적용</span>
+            <strong>즉시 배포용 HTML</strong>
+            <span>복사·다운로드 지원</span>
           </div>
         </div>
       </div>
@@ -63,16 +44,16 @@
     <main class="shell">
       <section class="panel">
         <div class="panel-title">
-          <h2>입력</h2>
-          <span>핵심 정보만 넣어도 결과가 생성됩니다.</span>
+          <h2>원고 입력</h2>
+          <span>클리닉 정보와 주제만 입력하면 구조가 자동으로 완성됩니다.</span>
         </div>
         <form id="generator" class="form">
           <div class="field">
             <label for="clinic">클리닉명</label>
-            <input id="clinic" name="clinic" placeholder="예: 라인뷰 성형외과" required />
+            <input id="clinic" name="clinic" placeholder="예: 라인뷰 클리닉" required />
           </div>
           <div class="field">
-            <label for="service">진료 분야</label>
+            <label for="service">진료 카테고리</label>
             <select id="service" name="service">
               <option value="성형외과">성형외과</option>
               <option value="피부과">피부과</option>
@@ -80,54 +61,54 @@
             </select>
           </div>
           <div class="field">
-            <label for="treatment">시술/수술명</label>
+            <label for="treatment">주요 시술/수술명</label>
             <input
               id="treatment"
               name="treatment"
-              placeholder="예: 리프팅 레이저, 눈매교정"
+              placeholder="예: 리프팅 레이저, 눈매 교정"
               required
             />
           </div>
           <div class="field">
-            <label for="topic">글 주제/제목 아이디어</label>
+            <label for="topic">콘텐츠 주제</label>
             <input
               id="topic"
               name="topic"
-              placeholder="예: 처진 피부에 맞는 리프팅 선택법"
+              placeholder="예: 처진 피부에 맞는 리프팅 선택 가이드"
               required
             />
           </div>
           <div class="field">
-            <label for="audience">타겟 독자</label>
+            <label for="audience">핵심 타겟</label>
             <input id="audience" name="audience" placeholder="예: 30~40대 탄력 고민" />
           </div>
           <div class="field">
-            <label for="tone">톤/문체</label>
+            <label for="tone">브랜드 톤</label>
             <select id="tone" name="tone">
-              <option value="전문적이지만 친절한">전문적이지만 친절한</option>
+              <option value="전문적이면서도 이해하기 쉬운">전문적이면서도 이해하기 쉬운</option>
               <option value="차분하고 신뢰감 있는">차분하고 신뢰감 있는</option>
-              <option value="간결하고 실용적인">간결하고 실용적인</option>
-              <option value="따뜻하고 공감하는">따뜻하고 공감하는</option>
+              <option value="논리적이고 정제된">논리적이고 정제된</option>
+              <option value="친절하고 공감하는">친절하고 공감하는</option>
             </select>
           </div>
           <div class="field">
-            <label for="length">길이</label>
+            <label for="length">분량</label>
             <div class="radio-group">
-              <label><input type="radio" name="length" value="short" />짧게</label>
-              <label><input type="radio" name="length" value="medium" checked />보통</label>
-              <label><input type="radio" name="length" value="long" />길게</label>
+              <label><input type="radio" name="length" value="short" />간단</label>
+              <label><input type="radio" name="length" value="medium" checked />표준</label>
+              <label><input type="radio" name="length" value="long" />심화</label>
             </div>
           </div>
           <div class="field">
-            <label for="keywords">키워드(쉼표로 구분)</label>
+            <label for="keywords">보조 키워드(쉼표 구분)</label>
             <input
               id="keywords"
               name="keywords"
-              placeholder="예: 리프팅, 레이저, 탄력, 피부과"
+              placeholder="예: 리프팅, 레이저, 탄력, 피부"
             />
           </div>
           <div class="field">
-            <label for="location">지역 키워드</label>
+            <label for="location">지역 포인트</label>
             <input id="location" name="location" placeholder="예: 강남, 분당" />
           </div>
           <div class="actions">
@@ -139,31 +120,19 @@
 
       <section class="panel">
         <div class="panel-title">
-          <h2>결과 미리보기</h2>
-          <span>생성된 원고를 바로 확인하세요.</span>
-        </div>
-        <div id="preview" class="preview">
-          <div class="placeholder">
-            좌측에 정보를 입력하면 블로그 원고가 만들어집니다.
-          </div>
+          <h2>HTML 원고</h2>
+          <span>복사 후 블로그 편집기에 그대로 붙여 넣으세요.</span>
         </div>
         <div class="panel-actions">
           <button id="copy" class="ghost" type="button">HTML 복사</button>
           <button id="download" class="primary" type="button">HTML 다운로드</button>
-        </div>
-      </section>
-
-      <section class="panel">
-        <div class="panel-title">
-          <h2>HTML 원고</h2>
-          <span>네이버/티스토리 등에서 바로 사용 가능합니다.</span>
         </div>
         <textarea id="htmlOutput" class="code" readonly></textarea>
       </section>
     </main>
 
     <footer class="footer">
-      <div>본 원고는 정보 제공용이며 의학적 진단/치료를 대체하지 않습니다.</div>
+      <div>본 문서는 일반 정보 제공을 위한 초안이며, 개별 진료는 의료진 상담 후 결정됩니다.</div>
     </footer>
 
     <script defer type="text/javascript" src="./main.js"></script>

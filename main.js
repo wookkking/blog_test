@@ -1,5 +1,4 @@
 const form = document.querySelector("#generator");
-const preview = document.querySelector("#preview");
 const htmlOutput = document.querySelector("#htmlOutput");
 const copyButton = document.querySelector("#copy");
 const downloadButton = document.querySelector("#download");
@@ -118,7 +117,6 @@ const buildHtml = (data) => {
 };
 
 const render = (html) => {
-  preview.innerHTML = html;
   htmlOutput.value = html;
 };
 
@@ -127,9 +125,7 @@ form.addEventListener("submit", (event) => {
   const formData = new FormData(form);
   const data = Object.fromEntries(formData.entries());
   if (!data.clinic || !data.treatment || !data.topic) {
-    preview.innerHTML =
-      '<div class="placeholder">클리닉명, 시술/수술명, 주제는 필수 입력입니다.</div>';
-    htmlOutput.value = "";
+    htmlOutput.value = "클리닉명, 시술/수술명, 콘텐츠 주제는 필수 입력입니다.";
     return;
   }
   const html = buildHtml({
@@ -148,8 +144,6 @@ form.addEventListener("submit", (event) => {
 
 resetButton.addEventListener("click", () => {
   form.reset();
-  preview.innerHTML =
-    '<div class="placeholder">좌측에 정보를 입력하면 블로그 원고가 만들어집니다.</div>';
   htmlOutput.value = "";
 });
 
