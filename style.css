@@ -1,14 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Space+Grotesk:wght@400;500;600&display=swap');
 
 :root {
-  --bg: #0a0f1c;
-  --bg-alt: #111a2f;
-  --text: #f2f5ff;
-  --muted: #b6c0d9;
-  --accent: #ffb347;
-  --accent-2: #61f4de;
-  --card: rgba(255, 255, 255, 0.06);
-  --border: rgba(255, 255, 255, 0.12);
+  --bg: #f9fafc;
+  --bg-alt: #ffffff;
+  --text: #141827;
+  --muted: #58627a;
+  --accent: #6c63ff;
+  --accent-2: #ff8a5b;
+  --accent-3: #2ad2c9;
+  --card: #ffffff;
+  --border: rgba(20, 24, 39, 0.08);
+  --shadow: 0 20px 60px rgba(36, 46, 82, 0.12);
 }
 
 * {
@@ -19,9 +21,10 @@ body {
   margin: 0;
   font-family: 'Space Grotesk', sans-serif;
   color: var(--text);
-  background: radial-gradient(circle at top left, #1c2d57, transparent 55%),
-    radial-gradient(circle at 20% 80%, #40245f, transparent 50%),
-    linear-gradient(135deg, var(--bg), #0b1325 55%, #0a0f1c 100%);
+  background: radial-gradient(circle at 10% 0%, #eef1ff, transparent 55%),
+    radial-gradient(circle at 90% 10%, #ffe9df, transparent 50%),
+    radial-gradient(circle at 50% 90%, #e7fbff, transparent 45%),
+    linear-gradient(180deg, var(--bg), #f6f7fb 60%, #f3f6ff 100%);
   min-height: 100vh;
   overflow-x: hidden;
 }
@@ -31,7 +34,7 @@ body {
   inset: 0;
   background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"%3E%3Cfilter id="n"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="120" height="120" filter="url(%23n)" opacity="0.12"/%3E%3C/svg%3E');
   pointer-events: none;
-  mix-blend-mode: soft-light;
+  mix-blend-mode: multiply;
   z-index: 0;
 }
 
@@ -92,7 +95,8 @@ button.hovering {
   padding: 0.6rem 1.1rem;
   border: 1px solid var(--border);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
+  background: #ffffff;
+  box-shadow: var(--shadow);
 }
 
 .hero-content {
@@ -106,7 +110,7 @@ button.hovering {
   text-transform: uppercase;
   font-size: 0.75rem;
   letter-spacing: 0.2rem;
-  color: var(--accent-2);
+  color: var(--accent);
 }
 
 .hero-text h1 {
@@ -129,11 +133,12 @@ button.hovering {
 }
 
 .primary {
-  background: linear-gradient(120deg, var(--accent), #ff7a6e);
-  color: #120c08;
+  background: linear-gradient(120deg, var(--accent), #8f85ff);
+  color: #ffffff;
   padding: 0.85rem 1.6rem;
   border-radius: 999px;
   font-weight: 600;
+  box-shadow: 0 15px 35px rgba(108, 99, 255, 0.35);
 }
 
 .ghost {
@@ -142,6 +147,7 @@ button.hovering {
   padding: 0.85rem 1.6rem;
   border-radius: 999px;
   border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .hero-stats {
@@ -167,7 +173,7 @@ button.hovering {
 }
 
 .card {
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
   border: 1px solid var(--border);
   border-radius: 1.2rem;
   padding: 1.4rem;
@@ -175,12 +181,12 @@ button.hovering {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow);
   animation: float 10s ease-in-out infinite;
 }
 
 .card.alt {
-  background: linear-gradient(160deg, rgba(97, 244, 222, 0.2), rgba(255, 255, 255, 0.04));
+  background: linear-gradient(160deg, rgba(42, 210, 201, 0.18), rgba(255, 255, 255, 0.7));
 }
 
 .card.wide {
@@ -190,7 +196,7 @@ button.hovering {
 .card-tag {
   font-size: 0.7rem;
   letter-spacing: 0.2rem;
-  color: var(--accent);
+  color: var(--accent-2);
 }
 
 .card-title {
@@ -220,7 +226,7 @@ button.hovering {
 }
 
 .categories {
-  background: linear-gradient(180deg, rgba(17, 26, 47, 0.9), rgba(10, 15, 28, 0.2));
+  background: rgba(255, 255, 255, 0.6);
 }
 
 .category-grid {
@@ -235,6 +241,7 @@ button.hovering {
   padding: 1.5rem;
   border-radius: 1rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: var(--shadow);
 }
 
 .category-grid article:hover {
@@ -247,11 +254,11 @@ button.hovering {
   margin-top: 1.2rem;
   font-size: 0.75rem;
   letter-spacing: 0.18rem;
-  color: var(--accent-2);
+  color: var(--accent);
 }
 
 .spotlight {
-  background: radial-gradient(circle at top right, rgba(255, 122, 110, 0.18), transparent 55%);
+  background: radial-gradient(circle at top right, rgba(108, 99, 255, 0.18), transparent 55%);
 }
 
 .spotlight-grid {
@@ -261,12 +268,13 @@ button.hovering {
 }
 
 .spotlight-card {
-  background: rgba(255, 255, 255, 0.07);
+  background: #ffffff;
   border: 1px solid var(--border);
   padding: 1.8rem;
   border-radius: 1.4rem;
   display: grid;
   gap: 1rem;
+  box-shadow: var(--shadow);
 }
 
 .spotlight-card .badge {
@@ -276,7 +284,7 @@ button.hovering {
 }
 
 .spotlight-card button {
-  background: transparent;
+  background: rgba(108, 99, 255, 0.08);
   border: 1px solid var(--border);
   color: var(--text);
   padding: 0.65rem 1.1rem;
@@ -291,8 +299,65 @@ button.hovering {
   color: var(--muted);
 }
 
+.gallery {
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.thumb-grid {
+  display: grid;
+  gap: 1.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.thumb-card {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 1.2rem;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  display: grid;
+}
+
+.thumb-image {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+}
+
+.thumb-image.food {
+  background-image: linear-gradient(135deg, rgba(255, 138, 91, 0.6), rgba(255, 255, 255, 0.4)),
+    url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80');
+}
+
+.thumb-image.wedding {
+  background-image: linear-gradient(135deg, rgba(108, 99, 255, 0.55), rgba(255, 255, 255, 0.35)),
+    url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80');
+}
+
+.thumb-image.overseas {
+  background-image: linear-gradient(135deg, rgba(42, 210, 201, 0.55), rgba(255, 255, 255, 0.35)),
+    url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80');
+}
+
+.thumb-image.lifestyle {
+  background-image: linear-gradient(135deg, rgba(255, 205, 86, 0.55), rgba(255, 255, 255, 0.35)),
+    url('https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=800&q=80');
+}
+
+.thumb-info {
+  padding: 1.4rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.thumb-info span {
+  font-size: 0.7rem;
+  letter-spacing: 0.2rem;
+  color: var(--accent);
+}
+
 .how {
-  background: linear-gradient(180deg, rgba(10, 15, 28, 0.2), rgba(17, 26, 47, 0.9));
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .steps {
@@ -302,14 +367,14 @@ button.hovering {
 }
 
 .step {
-  border-left: 2px solid var(--accent-2);
+  border-left: 2px solid var(--accent-3);
   padding-left: 1.5rem;
 }
 
 .step span {
   font-size: 1.3rem;
   font-weight: 600;
-  color: var(--accent-2);
+  color: var(--accent-3);
 }
 
 .apply {
@@ -317,13 +382,14 @@ button.hovering {
 }
 
 .apply-card {
-  background: linear-gradient(130deg, rgba(255, 255, 255, 0.1), rgba(97, 244, 222, 0.08));
+  background: linear-gradient(130deg, rgba(108, 99, 255, 0.12), rgba(255, 138, 91, 0.12));
   border: 1px solid var(--border);
   border-radius: 1.6rem;
   padding: 2.5rem;
   display: grid;
   gap: 1.5rem;
   align-items: center;
+  box-shadow: var(--shadow);
 }
 
 .apply-actions {
@@ -341,6 +407,7 @@ button.hovering {
   color: var(--muted);
   gap: 2rem;
   flex-wrap: wrap;
+  background: rgba(255, 255, 255, 0.65);
 }
 
 .footer-links {
