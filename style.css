@@ -356,6 +356,27 @@ button.hovering {
   color: var(--accent);
 }
 
+.thumb-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.thumb-pill {
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(108, 99, 255, 0.1);
+  color: #3a347b;
+  font-size: 0.75rem;
+}
+
+.thumb-price {
+  font-weight: 600;
+  color: var(--text);
+}
+
 .how {
   background: rgba(255, 255, 255, 0.7);
 }
