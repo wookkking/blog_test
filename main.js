@@ -80,7 +80,7 @@ if (thumbGrid) {
     .join('');
 }
 
-const buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('button, .btn');
 buttons.forEach((button) => {
   button.addEventListener('mouseenter', () => {
     button.classList.add('hovering');
