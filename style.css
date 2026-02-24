@@ -1,16 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Space+Grotesk:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@300;400;500;600&display=swap');
 
 :root {
-  --bg: #f9fafc;
+  --bg: #f7f4ef;
   --bg-alt: #ffffff;
-  --text: #141827;
-  --muted: #58627a;
-  --accent: #6c63ff;
-  --accent-2: #ff8a5b;
-  --accent-3: #2ad2c9;
+  --text: #1f1c17;
+  --muted: #6e655a;
+  --accent: #b79b5b;
+  --accent-2: #8b7a5b;
+  --accent-3: #3f6f6a;
   --card: #ffffff;
-  --border: rgba(20, 24, 39, 0.08);
-  --shadow: 0 20px 60px rgba(36, 46, 82, 0.12);
+  --border: rgba(31, 28, 23, 0.08);
+  --shadow: 0 18px 50px rgba(46, 39, 27, 0.12);
 }
 
 * {
@@ -19,12 +19,12 @@
 
 body {
   margin: 0;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Manrope', sans-serif;
   color: var(--text);
-  background: radial-gradient(circle at 10% 0%, #eef1ff, transparent 55%),
-    radial-gradient(circle at 90% 10%, #ffe9df, transparent 50%),
-    radial-gradient(circle at 50% 90%, #e7fbff, transparent 45%),
-    linear-gradient(180deg, var(--bg), #f6f7fb 60%, #f3f6ff 100%);
+  background: radial-gradient(circle at 8% 0%, #f2ece4, transparent 55%),
+    radial-gradient(circle at 92% 8%, #fbf3e7, transparent 55%),
+    radial-gradient(circle at 50% 92%, #f3efe9, transparent 50%),
+    linear-gradient(180deg, var(--bg), #f5f1eb 60%, #f6f2ec 100%);
   min-height: 100vh;
   overflow-x: hidden;
 }
@@ -34,7 +34,8 @@ body {
   inset: 0;
   background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"%3E%3Cfilter id="n"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="120" height="120" filter="url(%23n)" opacity="0.12"/%3E%3C/svg%3E');
   pointer-events: none;
-  mix-blend-mode: multiply;
+  mix-blend-mode: soft-light;
+  opacity: 0.25;
   z-index: 0;
 }
 
@@ -90,7 +91,7 @@ button.hovering {
 
 .logo {
   font-weight: 700;
-  letter-spacing: 0.2rem;
+  letter-spacing: 0.3rem;
   font-size: 0.95rem;
 }
 
@@ -119,12 +120,12 @@ button.hovering {
 .eyebrow {
   text-transform: uppercase;
   font-size: 0.75rem;
-  letter-spacing: 0.2rem;
+  letter-spacing: 0.3rem;
   color: var(--accent);
 }
 
 .hero-text h1 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: clamp(2.4rem, 4vw, 4.2rem);
   margin: 1rem 0;
 }
@@ -143,12 +144,12 @@ button.hovering {
 }
 
 .primary {
-  background: linear-gradient(120deg, var(--accent), #8f85ff);
-  color: #ffffff;
+  background: linear-gradient(120deg, #c7a86c, #a88a4b);
+  color: #1b1712;
   padding: 0.85rem 1.6rem;
   border-radius: 999px;
   font-weight: 600;
-  box-shadow: 0 15px 35px rgba(108, 99, 255, 0.35);
+  box-shadow: 0 12px 30px rgba(183, 155, 91, 0.35);
 }
 
 .ghost {
@@ -157,7 +158,7 @@ button.hovering {
   padding: 0.85rem 1.6rem;
   border-radius: 999px;
   border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.8);
 }
 
 .hero-stats {
@@ -183,7 +184,7 @@ button.hovering {
 }
 
 .card {
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.7));
   border: 1px solid var(--border);
   border-radius: 1.2rem;
   padding: 1.4rem;
@@ -196,7 +197,7 @@ button.hovering {
 }
 
 .card.alt {
-  background: linear-gradient(160deg, rgba(42, 210, 201, 0.18), rgba(255, 255, 255, 0.7));
+  background: linear-gradient(160deg, rgba(183, 155, 91, 0.16), rgba(255, 255, 255, 0.7));
 }
 
 .card.wide {
@@ -205,7 +206,7 @@ button.hovering {
 
 .card-tag {
   font-size: 0.7rem;
-  letter-spacing: 0.2rem;
+  letter-spacing: 0.25rem;
   color: var(--accent-2);
 }
 
@@ -226,7 +227,8 @@ button.hovering {
 }
 
 .section-head h2 {
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3.4vw, 2.8rem);
   margin-bottom: 0.6rem;
 }
 
@@ -236,7 +238,7 @@ button.hovering {
 }
 
 .categories {
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.7);
 }
 
 .category-grid {
@@ -263,12 +265,12 @@ button.hovering {
   display: block;
   margin-top: 1.2rem;
   font-size: 0.75rem;
-  letter-spacing: 0.18rem;
-  color: var(--accent);
+  letter-spacing: 0.22rem;
+  color: var(--accent-2);
 }
 
 .spotlight {
-  background: radial-gradient(circle at top right, rgba(108, 99, 255, 0.18), transparent 55%);
+  background: radial-gradient(circle at top right, rgba(183, 155, 91, 0.16), transparent 55%);
 }
 
 .spotlight-grid {
@@ -289,13 +291,13 @@ button.hovering {
 
 .spotlight-card .badge {
   font-size: 0.7rem;
-  letter-spacing: 0.2rem;
+  letter-spacing: 0.25rem;
   color: var(--accent);
 }
 
 .spotlight-card button,
 .spotlight-card .btn {
-  background: rgba(108, 99, 255, 0.08);
+  background: rgba(183, 155, 91, 0.12);
   border: 1px solid var(--border);
   color: var(--text);
   padding: 0.65rem 1.1rem;
@@ -378,8 +380,8 @@ button.hovering {
 .thumb-pill {
   padding: 0.25rem 0.6rem;
   border-radius: 999px;
-  background: rgba(108, 99, 255, 0.1);
-  color: #3a347b;
+  background: rgba(183, 155, 91, 0.15);
+  color: #5e4a24;
   font-size: 0.75rem;
 }
 
@@ -388,8 +390,19 @@ button.hovering {
   color: var(--text);
 }
 
+.primary:hover {
+  filter: brightness(0.98);
+  transform: translateY(-1px);
+}
+
+.ghost:hover,
+.nav .cta:hover {
+  border-color: rgba(183, 155, 91, 0.4);
+  transform: translateY(-1px);
+}
+
 .how {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.75);
 }
 
 .steps {
@@ -399,14 +412,14 @@ button.hovering {
 }
 
 .step {
-  border-left: 2px solid var(--accent-3);
+  border-left: 2px solid var(--accent-2);
   padding-left: 1.5rem;
 }
 
 .step span {
   font-size: 1.3rem;
   font-weight: 600;
-  color: var(--accent-3);
+  color: var(--accent-2);
 }
 
 .apply {
@@ -414,7 +427,7 @@ button.hovering {
 }
 
 .apply-card {
-  background: linear-gradient(130deg, rgba(108, 99, 255, 0.12), rgba(255, 138, 91, 0.12));
+  background: linear-gradient(130deg, rgba(183, 155, 91, 0.18), rgba(255, 255, 255, 0.6));
   border: 1px solid var(--border);
   border-radius: 1.6rem;
   padding: 2.5rem;
@@ -439,7 +452,7 @@ button.hovering {
   color: var(--muted);
   gap: 2rem;
   flex-wrap: wrap;
-  background: rgba(255, 255, 255, 0.65);
+  background: rgba(255, 255, 255, 0.8);
 }
 
 .footer-links {
@@ -454,7 +467,7 @@ button.hovering {
 }
 
 .page-hero h1 {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-size: clamp(2rem, 3.6vw, 3.4rem);
   margin: 0;
 }
@@ -493,8 +506,8 @@ button.hovering {
 .tag {
   padding: 0.3rem 0.7rem;
   border-radius: 999px;
-  background: rgba(108, 99, 255, 0.1);
-  color: #3a347b;
+  background: rgba(183, 155, 91, 0.15);
+  color: #5e4a24;
   font-size: 0.75rem;
 }
 
