@@ -150,6 +150,12 @@ textarea {
   gap: 12px;
 }
 
+.nav-actions a {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
 main {
   padding: 40px 6vw 80px;
 }
