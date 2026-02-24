@@ -3,9 +3,18 @@ const htmlOutput = document.querySelector("#htmlOutput");
 const copyButton = document.querySelector("#copy");
 const downloadButton = document.querySelector("#download");
 const resetButton = document.querySelector("#reset");
+const apiKeyInput = document.querySelector("#apiKey");
 
 const sanitize = (value) => String(value || "").trim();
 
+const API_KEY_STORAGE = "gemini_api_key";
+
+if (apiKeyInput) {
+  apiKeyInput.value = localStorage.getItem(API_KEY_STORAGE) || "";
+  apiKeyInput.addEventListener("input", () => {
+    localStorage.setItem(API_KEY_STORAGE, apiKeyInput.value.trim());
+  });
+}
 
 const listFromKeywords = (keywords) => {
   if (!keywords) return [];
@@ -253,6 +262,88 @@ const buildText = (data) => {
   return draft.trim();
 };
 
+const buildPrompt = (data) => {
+  const {
+    clinic,
+    service,
+    treatment,
+    topic,
+    audience,
+    tone,
+    length,
+    keywords,
+    location,
+    style,
+  } = data;
+
+  const keywordList = listFromKeywords(keywords).join(", ");
+  const locale = location ? `${location} 지역` : "지역";
+  const lengthMap = {
+    short: "간단",
+    medium: "표준",
+    long: "심화",
+  };
+
+  return [
+    "당신은 의료/클리닉 마케팅 전문 카피라이터입니다.",
+    "아래 정보를 바탕으로 한국어 블로그 원고를 작성하세요.",
+    "출력 형식은 제목/소제목이 포함된 문단형 텍스트이며, 불필요한 영어는 피하세요.",
+    "과장된 표현이나 의료 확정 표현을 피하고, 마지막에 주의 문구를 포함하세요.",
+    "",
+    `클리닉명: ${clinic}`,
+    `진료 카테고리: ${service}`,
+    `주요 시술/수술: ${treatment}`,
+    `콘텐츠 주제: ${topic}`,
+    `핵심 타겟: ${audience || "일반 고객"}`,
+    `브랜드 톤: ${tone}`,
+    `원고 길이: ${lengthMap[length] || "표준"}`,
+    `보조 키워드: ${keywordList || "없음"}`,
+    `지역 포인트: ${locale}`,
+    `스타일: ${style === "qa" ? "Q&A형" : style === "consult" ? "상담 정리형" : "정보형"}`,
+    "",
+    "구성 예시:",
+    "1) 제목",
+    "2) 한눈에 보는 요약",
+    "3) 본문(소제목 3~5개)",
+    "4) 체크리스트",
+    "5) 자주 묻는 질문",
+    "6) 주의 문구",
+  ].join("\n");
+};
+
+const generateWithGemini = async (prompt, apiKey) => {
+  const response = await fetch(
+    "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-goog-api-key": apiKey,
+      },
+      body: JSON.stringify({
+        contents: [{ parts: [{ text: prompt }] }],
+        generationConfig: {
+          temperature: 0.6,
+          maxOutputTokens: 1200,
+        },
+      }),
+    }
+  );
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(errorText || "API 호출에 실패했습니다.");
+  }
+
+  const data = await response.json();
+  const text =
+    data?.candidates?.[0]?.content?.parts?.map((part) => part.text).join("\n") || "";
+  if (!text) {
+    throw new Error("응답에 텍스트가 없습니다.");
+  }
+  return text.trim();
+};
+
 const render = (html) => {
   htmlOutput.value = html;
 };
@@ -265,7 +356,8 @@ form.addEventListener("submit", (event) => {
     htmlOutput.value = "클리닉명, 시술/수술명, 콘텐츠 주제는 필수 입력입니다.";
     return;
   }
-  const text = buildText({
+
+  const payload = {
     clinic: sanitize(data.clinic),
     service: sanitize(data.service),
     treatment: sanitize(data.treatment),
@@ -276,8 +368,39 @@ form.addEventListener("submit", (event) => {
     keywords: sanitize(data.keywords),
     location: sanitize(data.location),
     style: sanitize(data.style),
-  });
-  render(text);
+  };
+
+  const apiKey = sanitize(data.apiKey);
+  if (!apiKey) {
+    htmlOutput.value = "Gemini API 키를 입력해주세요.";
+    return;
+  }
+
+  const submitButton = form.querySelector("button[type='submit']");
+  if (submitButton) {
+    submitButton.disabled = true;
+    submitButton.textContent = "AI 생성 중...";
+  }
+
+  htmlOutput.value = "AI가 원고를 작성 중입니다. 잠시만 기다려주세요.";
+
+  const prompt = buildPrompt(payload);
+
+  generateWithGemini(prompt, apiKey)
+    .then((text) => {
+      render(text);
+    })
+    .catch((error) => {
+      console.error(error);
+      htmlOutput.value =
+        "AI 생성에 실패했습니다. API 키와 사용량 한도를 확인해 주세요.";
+    })
+    .finally(() => {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = "원고 생성";
+      }
+    });
 });
 
 resetButton.addEventListener("click", () => {
