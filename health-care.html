@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>내 몸 지키미 - 액티브 시니어</title>
+    <title>건강 관리 - 액티브 시니어</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <header>
         <div class="container">
-            <h1><a href="index.html">액티브 시니어</a></h1>
+            <h1 class="logo"><a href="index.html">액티브 시니어</a></h1>
             <nav>
                 <ul>
                     <li><a href="health-shop.html">건강 장보기</a></li>
                     <li><a href="community.html">시니어 소통방</a></li>
-                    <li><a href="health-care.html">건강 관리</a></li>
+                    <li><a href="health-care.html" class="active">건강 관리</a></li>
                     <li><a href="jobs.html">일자리 찾기</a></li>
                     <li><a href="leisure.html">여가 활동</a></li>
                 </ul>
@@ -23,90 +23,87 @@
         </div>
     </header>
 
-    <main class="container">
-        <div class="page-header">
-            <div>
+    <main>
+        <!-- Page Title Section -->
+        <section class="page-title-section text-center">
+            <div class="container">
                 <h2>내 몸 지키미</h2>
-                <p>오늘의 건강 상태를 기록하고 관리해보세요.</p>
+                <p class="section-intro">매일의 건강 상태를 기록하고 관리하며 활기찬 라이프스타일을 유지하세요.</p>
             </div>
-             <button class="btn-primary">+ 기록 추가</button>
-        </div>
+        </section>
 
-        <div class="health-dashboard-grid">
-            <!-- Health Metrics -->
-            <div class="card metric-card blood-pressure">
-                <div class="metric-header">
-                    <h4>❤️ 혈압</h4>
-                    <span>오늘 오전 8:00</span>
+        <!-- Health Dashboard Section -->
+        <section class="content-section">
+            <div class="container">
+                <div class="dashboard-header">
+                    <h3>오늘의 건강 대시보드</h3>
+                    <button class="btn-primary">+ 새 기록 추가</button>
                 </div>
-                <div class="metric-value">
-                    <p><strong>120</strong> /80 <small>mmHg</small></p>
-                </div>
-                 <div class="metric-status normal">
-                    <span>●</span> 정상
-                </div>
-            </div>
 
-            <div class="card metric-card blood-sugar">
-                <div class="metric-header">
-                    <h4>💧 혈당</h4>
-                    <span>식전</span>
-                </div>
-                <div class="metric-value">
-                    <p><strong>95</strong> <small>mg/dL</small></p>
-                </div>
-                <div class="metric-status normal">
-                    <span>●</span> 정상
-                </div>
-            </div>
+                <div class="health-dashboard-grid">
+                    <!-- Metric Card: Blood Pressure -->
+                    <div class="metric-card card">
+                        <h4>❤️ 혈압 <span class="metric-time">오전 8:00</span></h4>
+                        <p class="metric-value">120/80 <span class="metric-unit">mmHg</span></p>
+                        <div class="metric-status status-normal">정상</div>
+                    </div>
+                    
+                    <!-- Metric Card: Blood Sugar -->
+                    <div class="metric-card card">
+                        <h4>💧 혈당 <span class="metric-time">식전</span></h4>
+                        <p class="metric-value">95 <span class="metric-unit">mg/dL</span></p>
+                        <div class="metric-status status-normal">정상</div>
+                    </div>
 
-            <!-- Medication Tracker -->
-            <div class="card medication-tracker-card">
-                <div class="widget-header">
-                    <h4>오늘의 복약 관리</h4>
-                    <a href="#" class="view-all-link">전체 보기</a>
-                </div>
-                <ul class="med-list">
-                    <li class="med-item completed">
-                        <div class="med-icon">💊</div>
-                        <div class="med-text">
-                            <p>아침 약 (2알)</p>
-                            <span>식후 30분</span>
-                        </div>
-                        <button class="med-status-btn completed-btn">✓ 복용 완료</button>
-                    </li>
-                    <li class="med-item">
-                         <div class="med-icon">💊</div>
-                        <div class="med-text">
-                            <p>점심 약 (1알)</p>
-                             <span>식후 30분</span>
-                        </div>
-                        <button class="med-status-btn">복용하기</button>
-                    </li>
-                     <li class="med-item">
-                         <div class="med-icon">💊</div>
-                        <div class="med-text">
-                            <p>저녁 약 (2알)</p>
-                             <span>식후 30분</span>
-                        </div>
-                        <button class="med-status-btn">복용하기</button>
-                    </li>
-                </ul>
-            </div>
+                    <!-- Metric Card: Sleep -->
+                    <div class="metric-card card">
+                        <h4>🌙 수면 <span class="metric-time">어젯밤</span></h4>
+                        <p class="metric-value">7 <span class="metric-unit">시간</span> 30 <span class="metric-unit">분</span></p>
+                        <div class="metric-status status-good">개운함</div>
+                    </div>
 
-            <!-- Weekly Trend Chart -->
-            <div class="card chart-card">
-                 <div class="widget-header">
-                    <h4>주간 건강 변화</h4>
-                    <p class="chart-subtitle">지난 7일간의 기록입니다.</p>
+                    <!-- Chart Card -->
+                    <div class="chart-card card">
+                        <h4>주간 혈압 변화</h4>
+                        <canvas id="healthChart"></canvas>
+                    </div>
+
+                    <!-- Medication Card -->
+                    <div class="medication-card card">
+                        <h4>오늘의 복약 관리</h4>
+                        <ul class="med-list">
+                            <li class="med-item done">
+                                <div class="med-info">
+                                    <span class="med-name">아침 약 (2종)</span>
+                                    <span class="med-time">식후 30분</span>
+                                </div>
+                                <div class="med-status">✓ 완료</div>
+                            </li>
+                            <li class="med-item upcoming">
+                                <div class="med-info">
+                                    <span class="med-name">점심 약 (1종)</span>
+                                    <span class="med-time">식후 30분</span>
+                                </div>
+                                <button class="btn-secondary">복용</button>
+                            </li>
+                            <li class="med-item upcoming">
+                                <div class="med-info">
+                                    <span class="med-name">저녁 약 (2종)</span>
+                                    <span class="med-time">식후 30분</span>
+                                </div>
+                                <button class="btn-secondary">복용</button>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <canvas id="healthChart"></canvas>
             </div>
-        </div>
+        </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 액티브 시니어. All rights reserved.</p>
+        <div class="container">
+            <p>&copy; 2024 액티브 시니어. All rights reserved.</p>
+        </div>
     </footer>
     <script src="main.js"></script>
     <script src="health-care.js"></script>

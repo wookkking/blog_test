@@ -9,11 +9,11 @@
 <body>
     <header>
         <div class="container">
-            <h1><a href="index.html">액티브 시니어</a></h1>
+            <h1 class="logo"><a href="index.html">액티브 시니어</a></h1>
             <nav>
                 <ul>
                     <li><a href="health-shop.html">건강 장보기</a></li>
-                    <li><a href="community.html">시니어 소통방</a></li>
+                    <li><a href="community.html" class="active">시니어 소통방</a></li>
                     <li><a href="health-care.html">건강 관리</a></li>
                     <li><a href="jobs.html">일자리 찾기</a></li>
                     <li><a href="leisure.html">여가 활동</a></li>
@@ -22,101 +22,120 @@
         </div>
     </header>
 
-    <main class="container">
-        <div class="community-grid">
-            <!-- Main Feed -->
-            <div class="feed-content">
-                <div class="card create-post-card">
-                    <div class="create-post-input">
-                        <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="User profile picture" class="avatar-small">
-                        <input type="text" placeholder="오늘 하루, 활기찬 순간을 공유해보세요!" readonly id="new-post-trigger">
-                    </div>
-                    <button id="new-post-btn" class="btn-primary">소식 올리기</button>
-                </div>
+    <main>
+        <!-- Page Title Section -->
+        <section class="page-title-section text-center">
+            <div class="container">
+                <h2>시니어 소통방</h2>
+                <p class="section-intro">자유롭게 소통하며 즐거움을 나누는 공간입니다. 관심사를 공유하고 새로운 친구를 만나보세요.</p>
+            </div>
+        </section>
 
-                <div class="tabs">
-                    <button class="tab-btn active" data-tab="all">전체보기</button>
-                    <button class="tab-btn" data-tab="popular">인기글</button>
-                    <button class="tab-btn" data-tab="hobby">취미모임</button>
-                </div>
+        <!-- Community Section -->
+        <section class="content-section">
+            <div class="container">
+                <div class="community-layout">
 
-                <div id="post-list" class="tab-content active" data-tab="all">
-                    <!-- Post 1 -->
-                    <div class="card post-card">
-                        <div class="post-header">
-                            <img src="https://i.pravatar.cc/50?u=1" alt="user-avatar" class="avatar">
-                            <div class="post-author-info">
-                                <p class="author">산악대장 김철수</p>
-                                <p class="location">1시간 전 | 설악산 대청봉</p>
+                    <!-- Main Feed -->
+                    <div class="community-feed">
+                        <!-- Create Post Prompt -->
+                        <div class="create-post-prompt card">
+                            <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="내 프로필 사진" class="author-avatar">
+                            <input type="text" placeholder="새로운 이야기를 공유해보세요..." readonly>
+                            <button class="btn-primary">글쓰기</button>
+                        </div>
+
+                        <!-- Filter Buttons -->
+                        <div class="filter-buttons">
+                            <button class="filter-btn active">전체</button>
+                            <button class="filter-btn">인기글</button>
+                            <button class="filter-btn">취미모임</button>
+                            <button class="filter-btn">정보공유</button>
+                        </div>
+
+                        <!-- Post List -->
+                        <div class="post-list">
+                            <!-- Post Card 1 -->
+                            <div class="post-card card">
+                                <div class="post-card-header">
+                                    <img src="https://i.pravatar.cc/50?u=1" alt="user-avatar" class="author-avatar">
+                                    <div>
+                                        <span class="author-name">산악대장 김철수</span>
+                                        <span class="post-meta">1시간 전 | 설악산 대청봉</span>
+                                    </div>
+                                </div>
+                                <div class="post-card-body">
+                                    <p>오늘 날씨가 정말 환상적이네요! 🏔️ 60대에도 이 정도 등반은 거뜬합니다. 다음주 주말 트레킹 모임 함께 하실 분 계신가요? 정상에서 마시는 커피 맛이 꿀맛입니다!</p>
+                                    <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="설악산 등반 사진" class="post-image">
+                                </div>
+                                <div class="post-card-footer">
+                                    <span>❤️ 좋아요 128</span>
+                                    <span>💬 댓글 34</span>
+                                    <span>🔗 공유하기</span>
+                                </div>
+                            </div>
+                            <!-- Post Card 2 -->
+                            <div class="post-card card">
+                                <div class="post-card-header">
+                                    <img src="https://i.pravatar.cc/50?u=2" alt="user-avatar" class="author-avatar">
+                                    <div>
+                                        <span class="author-name">디지털 노마드 이여사</span>
+                                        <span class="post-meta">3시간 전 | 성수동 카페거리</span>
+                                    </div>
+                                </div>
+                                <div class="post-card-body">
+                                    <p>오랜만에 젊음의 거리 성수동에 왔어요. ☕💻 손주에게 배운 영상 편집을 복습하고 있답니다. 배움에는 나이가 없다는 말이 실감나는 오후네요. 다들 맛점 하셨나요?</p>
+                                </div>
+                                <div class="post-card-footer">
+                                    <span>❤️ 좋아요 97</span>
+                                    <span>💬 댓글 21</span>
+                                    <span>🔗 공유하기</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="post-body">
-                            <p>오늘 날씨가 정말 환상적이네요! 🏔️ 60대에도 이 정도 등반은 거뜬합니다. 다음주 주말 트레킹 모임 함께 하실 분 계신가요? 정상에서 마시는 커피 맛이 꿀맛입니다!</p>
-                            <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="설악산 등반 사진" class="post-image">
-                        </div>
-                        <div class="post-footer">
-                            <button>❤️ 좋아요 128</button>
-                            <button>💬 댓글 34</button>
-                            <button>🔗 공유하기</button>
-                        </div>
                     </div>
-                    <!-- Post 2 -->
-                    <div class="card post-card">
-                         <div class="post-header">
-                            <img src="https://i.pravatar.cc/50?u=2" alt="user-avatar" class="avatar">
-                            <div class="post-author-info">
-                                <p class="author">디지털 노마드 이여사</p>
-                                <p class="location">3시간 전 | 성수동 카페거리</p>
+
+                    <!-- Sidebar -->
+                    <aside class="community-sidebar">
+                        <div class="widget-card card">
+                            <h4>🔥 인기 모임</h4>
+                            <ul class="widget-list">
+                                <li><a href="#">#등산 동호회 <span>128명</span></a></li>
+                                <li><a href="#">#스마트폰 교실 <span>98명</span></a></li>
+                                <li><a href="#">#맛잘알 탐방대 <span>76명</span></a></li>
+                                <li><a href="#">#파크골프 멤버 <span>55명</span></a></li>
+                            </ul>
+                        </div>
+                        <div class="widget-card card">
+                            <h4>✨ 새로운 멤버</h4>
+                            <div class="new-members-list">
+                                <div class="member-item">
+                                    <img src="https://i.pravatar.cc/50?u=3" alt="member avatar">
+                                    <span>요리왕뽀삐</span>
+                                </div>
+                                <div class="member-item">
+                                    <img src="https://i.pravatar.cc/50?u=4" alt="member avatar">
+                                    <span>강남멋쟁이</span>
+                                </div>
+                                <div class="member-item">
+                                    <img src="https://i.pravatar.cc/50?u=5" alt="member avatar">
+                                    <span>여행가자</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="post-body">
-                            <p>오랜만에 젊음의 거리 성수동에 왔어요. ☕💻 손주에게 배운 영상 편집을 복습하고 있답니다. 배움에는 나이가 없다는 말이 실감나는 오후네요. 다들 맛점 하셨나요?</p>
-                        </div>
-                        <div class="post-footer">
-                            <button>❤️ 좋아요 97</button>
-                            <button>💬 댓글 21</button>
-                            <button>🔗 공유하기</button>
-                        </div>
-                    </div>
+                    </aside>
+
                 </div>
             </div>
-
-            <!-- Sidebar (Optional) -->
-            <aside class="sidebar">
-                 <div class="card widget-card">
-                    <h4>새로운 멤버</h4>
-                    <!-- new members list -->
-                </div>
-                <div class="card widget-card">
-                    <h4>인기 취미 모임</h4>
-                    <!-- popular groups list -->
-                </div>
-            </aside>
-        </div>
+        </section>
     </main>
 
-    <!-- Post Modal -->
-    <div id="post-modal" class="modal">
-        <div class="modal-content card">
-            <div class="modal-header">
-                <h3>새로운 소식 올리기</h3>
-                <span class="close">&times;</span>
-            </div>
-            <form id="post-form">
-                <textarea id="post-content" placeholder="오늘 하루, 활기찬 순간을 공유해보세요!" required></textarea>
-                <div class="modal-actions">
-                     <button type="button" class="btn-secondary">이미지 추가</button>
-                     <button type="submit" class="btn-primary">올리기</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
     <footer>
-        <p>&copy; 2024 액티브 시니어. All rights reserved.</p>
+        <div class="container">
+            <p>&copy; 2024 액티브 시니어. All rights reserved.</p>
+        </div>
     </footer>
 
     <script src="main.js"></script>
-    <script src="community.js"></script>
 </body>
 </html>

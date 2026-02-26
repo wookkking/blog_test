@@ -9,99 +9,109 @@
 <body>
     <header>
         <div class="container">
-            <h1><a href="index.html">액티브 시니어</a></h1>
+            <h1 class="logo"><a href="index.html">액티브 시니어</a></h1>
             <nav>
                 <ul>
                     <li><a href="health-shop.html">건강 장보기</a></li>
                     <li><a href="community.html">시니어 소통방</a></li>
                     <li><a href="health-care.html">건강 관리</a></li>
                     <li><a href="jobs.html">일자리 찾기</a></li>
-                    <li><a href="leisure.html">여가 활동</a></li>
+                    <li><a href="leisure.html" class="active">여가 활동</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main class="container">
-        <div class="page-header">
-            <div>
+    <main>
+        <!-- Page Title Section -->
+        <section class="page-title-section text-center">
+            <div class="container">
                 <h2>활기찬 여가 생활</h2>
-                <p>다양한 프로그램을 통해 삶의 즐거움을 더하세요.</p>
+                <p class="section-intro">다양한 프로그램을 통해 삶의 즐거움을 더하고 새로운 관심사를 발견해보세요.</p>
             </div>
-        </div>
+        </section>
 
-        <div class="controls-bar card">
-             <div class="category-filters">
-                <button class="filter-btn active">전체</button>
-                <button class="filter-btn">🤸&zwj;♀️ 동적활동</button>
-                <button class="filter-btn">🎨 정적활동</button>
-                <button class="filter-btn">💻 온라인</button>
-            </div>
-            <div class="search-bar">
-                <input type="text" placeholder="찾고 싶은 활동을 검색해보세요">
-            </div>
-        </div>
+        <!-- Leisure Activities Section -->
+        <section class="content-section">
+            <div class="container">
+                <!-- Controls Bar -->
+                <div class="shop-controls">
+                    <div class="filter-buttons">
+                        <button class="filter-btn active">전체</button>
+                        <button class="filter-btn">🤸&zwj;♀️ 동적활동</button>
+                        <button class="filter-btn">🎨 정적활동</button>
+                        <button class="filter-btn">💻 온라인</button>
+                    </div>
+                    <div class="search-form">
+                        <input type="text" placeholder="활동 검색...">
+                        <button type="submit">검색</button>
+                    </div>
+                </div>
 
-        <div class="activity-grid">
-            <!-- Activity 1 -->
-            <div class="activity-card">
-                <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="등산" class="activity-image">
-                <div class="activity-content">
-                    <div class="activity-tags">
-                        <span class="tag">운동</span>
-                        <span class="tag">자연</span>
+                <!-- Activities Grid (reusing product-grid style for consistency) -->
+                <div class="product-grid">
+                    <!-- Activity Card 1 -->
+                    <div class="product-card card">
+                        <div class="product-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="등산">
+                        </div>
+                        <div class="product-content">
+                             <div class="job-tags"><span class="tag">운동</span> <span class="tag">자연</span></div>
+                            <h4>등산 & 걷기</h4>
+                            <p class="activity-description">심폐 기능 강화와 자연과의 교감을 통해 몸과 마음을 건강하게 합니다.</p>
+                            <a href="#" class="btn-secondary">프로그램 보기</a>
+                        </div>
                     </div>
-                    <h4>등산 & 걷기</h4>
-                    <p>심폐 기능 강화와 자연과의 교감을 통해 몸과 마음을 건강하게 합니다.</p>
-                    <a href="#" class="btn-secondary">자세히 보기</a>
+                    <!-- Activity Card 2 -->
+                    <div class="product-card card">
+                        <div class="product-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1518771963243-d2d4e9d08969?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="공예">
+                        </div>
+                        <div class="product-content">
+                             <div class="job-tags"><span class="tag">창작</span> <span class="tag">실내</span></div>
+                            <h4>공예 교실</h4>
+                            <p class="activity-description">도예, 목공 등을 통해 창의력을 발휘하고 새로운 성취감을 느껴보세요.</p>
+                            <a href="#" class="btn-secondary">프로그램 보기</a>
+                        </div>
+                    </div>
+                    <!-- Activity Card 3 -->
+                    <div class="product-card card">
+                        <div class="product-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1558561198-d5e0a424719c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="노래">
+                        </div>
+                        <div class="product-content">
+                             <div class="job-tags"><span class="tag">음악</span> <span class="tag">사교</span></div>
+                            <h4>노래 교실</h4>
+                             <p class="activity-description">스트레스 해소는 물론, 새로운 친구들과 즐거운 시간을 보낼 수 있습니다.</p>
+                            <a href="#" class="btn-secondary">프로그램 보기</a>
+                        </div>
+                    </div>
+                     <!-- Activity Card 4 -->
+                    <div class="product-card card">
+                        <div class="product-image-wrapper">
+                           <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="봉사활동">
+                        </div>
+                        <div class="product-content">
+                             <div class="job-tags"><span class="tag">나눔</span> <span class="tag">보람</span></div>
+                            <h4>봉사활동</h4>
+                            <p class="activity-description">사회에 기여하며 보람과 만족감을 얻고 새로운 경험을 할 수 있습니다.</p>
+                            <a href="#" class="btn-secondary">프로그램 보기</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="pagination">
+                    <button class="btn-secondary">더보기</button>
                 </div>
             </div>
-            <!-- Activity 2 -->
-            <div class="activity-card">
-                <img src="https://images.unsplash.com/photo-1518771963243-d2d4e9d08969?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="공예" class="activity-image">
-                <div class="activity-content">
-                    <div class="activity-tags">
-                        <span class="tag">창작</span>
-                        <span class="tag">실내</span>
-                    </div>
-                    <h4>공예 교실</h4>
-                    <p>도예, 목공 등을 통해 창의력을 발휘하고 새로운 성취감을 느껴보세요.</p>
-                    <a href="#" class="btn-secondary">자세히 보기</a>
-                </div>
-            </div>
-            <!-- Activity 3 -->
-            <div class="activity-card">
-                <img src="https://images.unsplash.com/photo-1558561198-d5e0a424719c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="노래" class="activity-image">
-                <div class="activity-content">
-                     <div class="activity-tags">
-                        <span class="tag">음악</span>
-                        <span class="tag">사교</span>
-                    </div>
-                    <h4>노래 교실</h4>
-                    <p>스트레스 해소는 물론, 새로운 친구들과 즐거운 시간을 보낼 수 있습니다.</p>
-                    <a href="#" class="btn-secondary">자세히 보기</a>
-                </div>
-            </div>
-            <!-- Activity 4 -->
-             <div class="activity-card">
-                <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="봉사활동" class="activity-image">
-                <div class="activity-content">
-                     <div class="activity-tags">
-                        <span class="tag">나눔</span>
-                        <span class="tag">보람</span>
-                    </div>
-                    <h4>봉사활동</h4>
-                    <p>사회에 기여하며 보람과 만족감을 얻고 새로운 경험을 할 수 있습니다.</p>
-                    <a href="#" class="btn-secondary">자세히 보기</a>
-                </div>
-            </div>
-        </div>
-         <button class="btn-secondary load-more-btn">더보기</button>
+        </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 액티브 시니어. All rights reserved.</p>
+        <div class="container">
+            <p>&copy; 2024 액티브 시니어. All rights reserved.</p>
+        </div>
     </footer>
+
     <script src="main.js"></script>
 </body>
 </html>
