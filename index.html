@@ -8,113 +8,75 @@
 </head>
 <body>
     <header>
-        <h1><a href="index.html">액티브 시니어</a></h1>
-        <nav>
-            <ul>
-                <li><a href="health-shop.html">건강 장보기</a></li>
-                <li><a href="community.html">시니어 소통방</a></li>
-                <li><a href="health-care.html">건강 관리</a></li>
-                <li><a href="jobs.html">일자리 찾기</a></li>
-                <li><a href="leisure.html">여가 활동</a></li>
-            </ul>
-        </nav>
-        <button id="dark-mode-toggle">다크 모드</button>
+        <div class="container">
+            <h1><a href="index.html">액티브 시니어</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="health-shop.html">건강 장보기</a></li>
+                    <li><a href="community.html">시니어 소통방</a></li>
+                    <li><a href="health-care.html">건강 관리</a></li>
+                    <li><a href="jobs.html">일자리 찾기</a></li>
+                    <li><a href="leisure.html">여가 활동</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <main class="dashboard">
-        <section class="greeting">
-            <div class="user-profile">
-                <img src="https://i.pravatar.cc/60?u=user" alt="사용자 프로필">
-                <div>
-                    <p class="date">10월 24일 화요일</p>
-                    <p class="user-name">안녕하세요, 길동님!</p>
+    <main class="container">
+        <div class="main-grid">
+            <!-- Main Content -->
+            <div class="main-content">
+                <div class="card welcome-card">
+                    <div class="welcome-text">
+                        <p>10월 24일 화요일</p>
+                        <h2>안녕하세요, 길동님!</h2>
+                    </div>
+                    <div class="user-profile">
+                        <img src="https://i.pravatar.cc/150?u=a042581f4e29026704d" alt="User profile picture">
+                        <button class="dark-mode-toggle">🌙</button>
+                    </div>
                 </div>
-            </div>
-            <div class="notifications">
-                <span>🔔</span>
-            </div>
-        </section>
 
-        <section class="quick-actions">
-            <a href="health-shop.html" class="action-card">
-                <div class="card-icon-wrapper orange">
-                    <span>🛒</span>
+                <div class="action-cards">
+                    <a href="health-shop.html" class="action-card">
+                        <div class="card-icon-wrapper green">
+                            <span>🛒</span>
+                        </div>
+                        <div class="action-card-text">
+                            <h3>오늘의 알뜰 장보기</h3>
+                            <p>최저가 상품을 확인하세요</p>
+                        </div>
+                    </a>
+                    <a href="jobs.html" class="action-card">
+                        <div class="card-icon-wrapper blue">
+                            <span>💼</span>
+                        </div>
+                        <div class="action-card-text">
+                            <h3>시니어 일자리 추천</h3>
+                            <p>내 주변 일자리를 찾아보세요</p>
+                        </div>
+                    </a>
                 </div>
-                <h3>오늘의 알뜰 장보기</h3>
-                <p>최저가 확인하기</p>
-            </a>
-            <a href="jobs.html" class="action-card">
-                 <div class="card-icon-wrapper blue">
-                    <span>💼</span>
-                </div>
-                <h3>시니어 일자리 추천</h3>
-                <p>내 주변 일자리</p>
-            </a>
-        </section>
+            </div>
 
-        <section class="steps-widget">
-            <div class="widget-header">
-                <h4>오늘의 걸음</h4>
-                <p>목표까지 1,550 걸음 남았어요!</p>
-            </div>
-            <div class="widget-content">
-                <div class="progress-circle" data-progress="69">
-                    <svg class="progress-ring" width="120" height="120">
-                       <circle class="progress-ring__circle_bg" stroke-width="10" fill="transparent" r="50" cx="60" cy="60"/>
-                       <circle class="progress-ring__circle" stroke-width="10" fill="transparent" r="50" cx="60" cy="60"/>
-                    </svg>
-                    <span class="progress-text">69%</span>
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="card widget-card">
+                    <div class="widget-header">
+                        <h4>오늘의 걸음</h4>
+                        <p>목표까지 1,550 걸음 남았어요!</p>
+                    </div>
+                    <div class="progress-circle" style="--progress: 69">
+                        <span class="progress-circle-value">69%</span>
+                    </div>
                 </div>
-                <div class="steps-count">
-                    <p class="current">3,450</p>
-                    <p class="goal">/ 5,000 걸음</p>
-                </div>
-            </div>
-            <a href="#" class="details-btn">자세히 보기 &rarr;</a>
-        </section>
-
-        <section class="health-check">
-            <div class="section-header">
-                <h4>오늘의 건강 체크</h4>
-            </div>
-            <div class="check-item completed">
-                <div class="item-icon water">💧</div>
-                <div class="item-text">
-                    <p>물 마시기</p>
-                    <span>목표 8잔 중 4잔 완료</span>
-                </div>
-                <div class="checkbox checked">✓</div>
-            </div>
-            <div class="check-item">
-                <div class="item-icon pill">💊</div>
-                <div class="item-text">
-                    <p>혈압약 복용</p>
-                    <span>아침 식사 후 30분</span>
-                </div>
-                <div class="checkbox"></div>
-            </div>
-        </section>
-
-        <section class="recommended-class">
-            <div class="section-header">
-                <h4>추천 취미 클래스</h4>
-                <a href="leisure.html" class="view-all">전체보기</a>
-            </div>
-            <div class="class-card">
-                <div class="card-content">
-                     <span class="tag">인기 강좌</span>
-                     <h3>왕초보 스마트폰 교실</h3>
-                     <p>글자 크기 조절부터 카카오톡까지</p>
-                </div>
-                <div class="play-icon">▶</div>
-            </div>
-        </section>
+            </aside>
+        </div>
     </main>
 
     <footer>
         <p>&copy; 2024 액티브 시니어. All rights reserved.</p>
     </footer>
-
     <script src="main.js"></script>
 </body>
 </html>

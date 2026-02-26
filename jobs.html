@@ -8,54 +8,127 @@
 </head>
 <body>
     <header>
-        <h1><a href="index.html">액티브 시니어</a></h1>
-        <nav>
-            <ul>
-                <li><a href="health-shop.html">건강 장보기</a></li>
-                <li><a href="community.html">시니어 소통방</a></li>
-                <li><a href="health-care.html">건강 관리</a></li>
-                <li><a href="jobs.html">일자리 찾기</a></li>
-                <li><a href="leisure.html">여가 활동</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <h1><a href="index.html">액티브 시니어</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="health-shop.html">건강 장보기</a></li>
+                    <li><a href="community.html">시니어 소통방</a></li>
+                    <li><a href="health-care.html">건강 관리</a></li>
+                    <li><a href="jobs.html">일자리 찾기</a></li>
+                    <li><a href="leisure.html">여가 활동</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <main>
-        <h2>시니어 맞춤 일자리</h2>
-        <div class="job-list">
-            <div class="job-item">
-                <h3>도서관 사서 보조</h3>
-                <p><strong>채용 형태:</strong> 계약직</p>
-                <p><strong>근무 조건:</strong> 주 3일 (월, 수, 금), 10:00 ~ 17:00</p>
-                <p><strong>급여:</strong> 월 150만원</p>
-                <p><strong>업무 내용:</strong> 도서 정리, 대출/반납 업무 보조, 열람실 환경 관리</p>
-            </div>
-            <div class="job-item">
-                <h3>어린이집 등하원 도우미</h3>
-                <p><strong>채용 형태:</strong> 시간제</p>
-                <p><strong>근무 조건:</strong> 주 5일 (월-금), 08:00 ~ 10:00, 16:00 ~ 18:00</p>
-                <p><strong>급여:</strong> 시급 12,000원</p>
-                <p><strong>업무 내용:</strong> 어린이집 등하원 차량 동승 및 안전 관리</p>
-            </div>
-            <div class="job-item">
-                <h3>주말 농장 관리인</h3>
-                <p><strong>채용 형태:</strong> 주말 근무</p>
-                <p><strong>근무 조건:</strong> 토, 일, 09:00 ~ 18:00</p>
-                <p><strong>급여:</strong> 일급 100,000원</p>
-                <p><strong>업무 내용:</strong> 텃밭 관리, 방문객 안내, 시설 유지 보수</p>
-            </div>
-            <div class="job-item">
-                <h3>사무 보조 (단기)</h3>
-                <p><strong>채용 형태:</strong> 단기 계약직 (3개월)</p>
-                <p><strong>근무 조건:</strong> 주 5일 (월-금), 09:00 ~ 15:00</p>
-                <p><strong>급여:</strong> 월 180만원</p>
-                <p><strong>업무 내용:</strong> 문서 정리, 데이터 입력, 전화 응대 등</p>
+    <main class="container">
+        <div class="page-header">
+            <div>
+                <h2>시니어 맞춤 일자리</h2>
+                <p>새로운 도전을 시작할 기회를 찾아보세요!</p>
             </div>
         </div>
+
+        <div class="card job-search-filters">
+            <input type="text" placeholder="채용공고 검색하기" class="job-search-input">
+            <div class="filter-selectors">
+                <select name="job-type">
+                    <option value="all">직종 전체</option>
+                    <option value="office">사무직</option>
+                    <option value="service">서비스직</option>
+                    <option value="field">현장직</option>
+                </select>
+                <select name="location">
+                    <option value="all">지역 전체</option>
+                    <option value="seoul">서울</option>
+                    <option value="gyeonggi">경기</option>
+                    <option value="incheon">인천</option>
+                </select>
+            </div>
+            <button class="btn-primary">검색</button>
+        </div>
+
+        <div class="job-list-container">
+            <!-- Job 1 -->
+            <div class="card job-card">
+                <div class="job-card-header">
+                    <h5>도서관 사서 보조</h5>
+                    <span>시립 중앙 도서관</span>
+                </div>
+                <div class="job-card-tags">
+                    <span class="tag">계약직</span>
+                    <span class="tag">서울</span>
+                </div>
+                <div class="job-card-salary">
+                    <p>월 150만원</p>
+                </div>
+                <div class="job-card-footer">
+                     <p class="job-card-summary">주 3일 (월,수,금) | 도서 정리, 대출/반납 보조</p>
+                     <a href="#" class="btn-secondary">상세보기</a>
+                </div>
+            </div>
+            <!-- Job 2 -->
+            <div class="card job-card">
+                <div class="job-card-header">
+                    <h5>어린이집 등하원 도우미</h5>
+                    <span>햇살 어린이집</span>
+                </div>
+                 <div class="job-card-tags">
+                    <span class="tag">시간제</span>
+                    <span class="tag">경기</span>
+                </div>
+                <div class="job-card-salary">
+                    <p>시급 12,000원</p>
+                </div>
+                <div class="job-card-footer">
+                     <p class="job-card-summary">주 5일 | 등하원 차량 동승 및 안전 관리</p>
+                     <a href="#" class="btn-secondary">상세보기</a>
+                </div>
+            </div>
+             <!-- Job 3 -->
+            <div class="card job-card">
+                <div class="job-card-header">
+                    <h5>주말 농장 관리인</h5>
+                    <span>행복 주말 농장</span>
+                </div>
+                 <div class="job-card-tags">
+                    <span class="tag">주말근무</span>
+                    <span class="tag">인천</span>
+                </div>
+                <div class="job-card-salary">
+                    <p>일급 100,000원</p>
+                </div>
+                <div class="job-card-footer">
+                    <p class="job-card-summary">토, 일 근무 | 텃밭 관리, 방문객 안내</p>
+                     <a href="#" class="btn-secondary">상세보기</a>
+                </div>
+            </div>
+             <!-- Job 4 -->
+            <div class="card job-card">
+                <div class="job-card-header">
+                    <h5>사무 보조 (단기)</h5>
+                    <span>(주) 액티브 라이프</span>
+                </div>
+                 <div class="job-card-tags">
+                    <span class="tag">단기 계약직</span>
+                    <span class="tag">서울</span>
+                </div>
+                <div class="job-card-salary">
+                    <p>월 180만원</p>
+                </div>
+                <div class="job-card-footer">
+                     <p class="job-card-summary">3개월 계약 | 문서 정리, 데이터 입력</p>
+                     <a href="#" class="btn-secondary">상세보기</a>
+                </div>
+            </div>
+        </div>
+         <button class="btn-secondary load-more-btn">더보기</button>
     </main>
 
     <footer>
         <p>&copy; 2024 액티브 시니어. All rights reserved.</p>
     </footer>
+    <script src="main.js"></script>
 </body>
 </html>

@@ -8,20 +8,22 @@
 </head>
 <body>
     <header>
-        <h1><a href="index.html">액티브 시니어</a></h1>
-        <nav>
-            <ul>
-                <li><a href="health-shop.html">건강 장보기</a></li>
-                <li><a href="community.html">시니어 소통방</a></li>
-                <li><a href="health-care.html">건강 관리</a></li>
-                <li><a href="jobs.html">일자리 찾기</a></li>
-                <li><a href="leisure.html">여가 활동</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <h1><a href="index.html">액티브 시니어</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="health-shop.html">건강 장보기</a></li>
+                    <li><a href="community.html">시니어 소통방</a></li>
+                    <li><a href="health-care.html">건강 관리</a></li>
+                    <li><a href="jobs.html">일자리 찾기</a></li>
+                    <li><a href="leisure.html">여가 활동</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <main class="shop-page">
-        <div class="shop-header">
+    <main class="container">
+        <div class="page-header">
             <div>
                 <h2>건강 장보기</h2>
                 <p>오늘도 건강한 하루 되세요!</p>
@@ -32,70 +34,71 @@
             </div>
         </div>
 
-        <div class="search-bar">
-            <input type="text" placeholder="🔍 무엇을 찾으세요?">
-        </div>
-
-        <div class="category-filters">
-            <button class="filter-btn active">전체</button>
-            <button class="filter-btn">🥬 신선식품</button>
-            <button class="filter-btn">💊 건강식품</button>
-        </div>
-
-        <section class="weekly-recommendation">
-            <div class="section-header">
-                <h4>이번 주 추천</h4>
-                <a href="#" class="view-all">더보기 ></a>
+        <div class="controls-bar card">
+            <div class="search-bar">
+                <input type="text" placeholder="🔍 무엇을 찾으세요?">
             </div>
-            <div class="featured-item">
-                <img src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="경북 청송 꿀사과">
-                <div class="item-details">
+            <div class="category-filters">
+                <button class="filter-btn active">전체</button>
+                <button class="filter-btn">🥬 신선식품</button>
+                <button class="filter-btn">💊 건강식품</button>
+            </div>
+        </div>
+
+        <section class="featured-section">
+            <h4>이번 주 추천</h4>
+            <div class="card featured-item-card">
+                <div class="featured-item-image">
+                    <img src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="경북 청송 꿀사과">
+                </div>
+                <div class="featured-item-details">
                     <span class="tag green">산지직송</span>
                     <h3>경북 청송 꿀사과 3kg</h3>
-                    <p>아침에 먹는 금사과, 당도 보장</p>
+                    <p>아침에 먹는 금사과, 당도 보장. 신선하고 아삭한 식감을 즐겨보세요.</p>
                     <div class="price-info">
                         <span class="original-price">22,000원</span>
                         <span class="sale-price">18,900원</span>
                     </div>
+                    <button class="btn-primary">장바구니 담기</button>
                 </div>
-                <button class="add-to-cart-btn">장바구니 담기</button>
             </div>
         </section>
 
-        <section class="popular-items">
-             <div class="section-header">
-                <h4>인기 상품</h4>
-            </div>
-            <div class="item-list">
-                <div class="popular-item">
-                    <img src="https://images.unsplash.com/photo-1607620835449-c06d28054367?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="프리미엄 오메가3">
-                    <div class="item-info">
+        <section class="shop-items-section">
+            <h4>인기 상품</h4>
+            <div class="shop-items-grid">
+                <!-- Popular Item 1 -->
+                <div class="card shop-item-card">
+                    <img src="https://images.unsplash.com/photo-1607620835449-c06d28054367?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="프리미엄 오메가3" class="shop-item-img">
+                    <div class="shop-item-info">
                         <span class="tag blue">건강기능</span>
                         <h5>프리미엄 오메가3</h5>
                         <p>혈행 개선과 눈 건강에 도움</p>
                         <span class="price">25,000원</span>
                     </div>
-                    <button class="buy-now-btn">바로구매</button>
+                    <button class="btn-secondary">바로구매</button>
                 </div>
-                <div class="popular-item">
-                    <img src="https://images.unsplash.com/photo-1597362924948-c878ada389f6?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="유기농 쌈채소 모음">
-                    <div class="item-info">
+                <!-- Popular Item 2 -->
+                <div class="card shop-item-card">
+                    <img src="https://images.unsplash.com/photo-1597362924948-c878ada389f6?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="유기농 쌈채소 모음" class="shop-item-img">
+                    <div class="shop-item-info">
                         <span class="tag green">친환경</span>
                         <h5>유기농 쌈채소 모음</h5>
                         <p>당일 수확, 당일 배송 원칙</p>
                         <span class="price">8,900원</span>
                     </div>
-                    <button class="buy-now-btn">바로구매</button>
+                    <button class="btn-secondary">바로구매</button>
                 </div>
-                <div class="popular-item">
-                    <img src="https://images.unsplash.com/photo-1556910110-a5a63dfd9125?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="안전 손잡이 식도">
-                     <div class="item-info">
+                <!-- Popular Item 3 -->
+                <div class="card shop-item-card">
+                    <img src="https://images.unsplash.com/photo-1556910110-a5a63dfd9125?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="안전 손잡이 식도" class="shop-item-img">
+                     <div class="shop-item-info">
                         <span class="tag orange">편리함</span>
                         <h5>안전 손잡이 식도</h5>
-                        <p>손목 부담 없는 인체공학 ...</p>
+                        <p>손목 부담 없는 인체공학 디자인</p>
                         <span class="price">32,000원</span>
                     </div>
-                    <button class="buy-now-btn">바로구매</button>
+                    <button class="btn-secondary">바로구매</button>
                 </div>
             </div>
         </section>
@@ -104,6 +107,7 @@
     <footer>
         <p>&copy; 2024 액티브 시니어. All rights reserved.</p>
     </footer>
+    <script src="main.js"></script>
     <script src="health-shop.js"></script>
 </body>
 </html>
