@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>건강 관리 - 액티브 시니어</title>
+    <title>내 몸 지키미 - 액티브 시니어</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <header>
@@ -20,24 +21,71 @@
         </nav>
     </header>
 
-    <main>
-        <h2>시니어 맞춤 건강 관리</h2>
-        <div class="health-info">
-            <h3>정기적인 건강 검진의 중요성</h3>
-            <p>나이가 들수록 정기적인 건강 검진은 질병을 조기에 발견하고 예방하는 데 매우 중요합니다. 특히 고혈압, 당뇨, 고지혈증 등 만성 질환은 꾸준한 관리가 필요합니다. 국가건강검진을 적극적으로 활용하고, 필요한 경우 추가적인 정밀 검사를 받는 것이 좋습니다.</p>
+    <main class="health-dashboard">
+        <div class="page-title">
+            <h2>내 몸 지키미</h2>
+            <span>🔔</span>
         </div>
-        <div class="health-info">
-            <h3>시니어 맞춤 운동 프로그램</h3>
-            <p>규칙적인 운동은 근력 유지, 심혈관 건강 증진, 정신 건강 개선에 도움을 줍니다. 무리하지 않는 선에서 걷기, 수영, 요가 등 자신에게 맞는 운동을 꾸준히 하는 것이 중요합니다. 관절에 부담이 적은 운동을 선택하고, 운동 전후 스트레칭을 잊지 마세요.</p>
-        </div>
-        <div class="health-info">
-            <h3>정신 건강 관리</h3>
-            <p>신체 건강만큼 정신 건강도 중요합니다. 긍정적인 마음을 유지하고, 취미 활동이나 사회 활동에 적극적으로 참여하여 스트레스를 해소하는 것이 좋습니다. 필요하다면 전문가의 상담을 받는 것도 좋은 방법입니다.</p>
-        </div>
+
+        <section class="medication-tracker">
+            <div class="section-header">
+                <h4>약 먹기</h4>
+                <a href="#" class="view-all">전체 보기</a>
+            </div>
+            <div class="med-item completed">
+                <div class="item-icon pill-blue">💊</div>
+                <div class="item-text">
+                    <p>아침 약</p>
+                    <span>식후 30분 • 2알</span>
+                </div>
+                <button class="status-btn completed-btn">✓ 복용</button>
+            </div>
+            <div class="med-item">
+                <div class="item-icon pill-gray">💊</div>
+                <div class="item-text">
+                    <p>점심 약</p>
+                    <span>식후 30분 • 1알</span>
+                </div>
+                <button class="status-btn">완료</button>
+            </div>
+        </section>
+
+        <section class="health-metrics">
+            <div class="metric-card blood-pressure">
+                <div class="metric-header">
+                    <span>❤️ 혈압</span>
+                </div>
+                <div class="metric-value">
+                    <p><strong>120</strong> /80</p>
+                    <span>오늘 오전 8:00</span>
+                </div>
+                <button class="record-btn">+ 기록하기</button>
+            </div>
+            <div class="metric-card blood-sugar">
+                <div class="metric-header">
+                    <span>💧 혈당</span>
+                </div>
+                <div class="metric-value">
+                    <p><strong>95</strong> mg/dL</p>
+                    <span>식전</span>
+                </div>
+                <button class="record-btn">+ 기록하기</button>
+            </div>
+        </section>
+
+        <section class="weekly-trend">
+            <div class="section-header">
+                <h4>주간 건강 변화</h4>
+                <span>...</span>
+            </div>
+            <p class="chart-subtitle">지난 7일간의 기록입니다.</p>
+            <canvas id="healthChart"></canvas>
+        </section>
     </main>
 
     <footer>
         <p>&copy; 2024 액티브 시니어. All rights reserved.</p>
     </footer>
+    <script src="health-care.js"></script>
 </body>
 </html>

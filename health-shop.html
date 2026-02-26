@@ -20,38 +20,90 @@
         </nav>
     </header>
 
-    <main>
-        <h2>건강 장보기</h2>
-        <div class="shop-items">
-            <div class="item">
-                <img src="https://via.placeholder.com/200x200.png?text=Product+Image" alt="상품 이미지">
-                <h3>프리미엄 오메가-3</h3>
-                <p class="price">35,000원</p>
-                <p>혈행 개선 및 기억력 증진에 도움을 주는 고품질 오메가-3입니다.</p>
+    <main class="shop-page">
+        <div class="shop-header">
+            <div>
+                <h2>건강 장보기</h2>
+                <p>오늘도 건강한 하루 되세요!</p>
             </div>
-            <div class="item">
-                <img src="https://via.placeholder.com/200x200.png?text=Product+Image" alt="상품 이미지">
-                <h3>관절 건강 MSM</h3>
-                <p class="price">28,000원</p>
-                <p>관절 및 연골 건강에 도움을 줄 수 있는 식이유황(MSM) 보충제입니다.</p>
-            </div>
-            <div class="item">
-                <img src="https://via.placeholder.com/200x200.png?text=Product+Image" alt="상품 이미지">
-                <h3>눈 건강 루테인</h3>
-                <p class="price">32,000원</p>
-                <p>노화로 인해 감소될 수 있는 황반색소밀도를 유지하여 눈 건강에 도움을 줍니다.</p>
-            </div>
-            <div class="item">
-                <img src="https://via.placeholder.com/200x200.png?text=Product+Image" alt="상품 이미지">
-                <h3>활력 증진 비타민B 컴플렉스</h3>
-                <p class="price">25,000원</p>
-                <p>에너지 생성 및 활력 증진에 필요한 비타민B군 8종을 모두 함유하고 있습니다.</p>
+            <div class="cart-icon">
+                <span>🛒</span>
+                <span class="cart-count">2</span>
             </div>
         </div>
+
+        <div class="search-bar">
+            <input type="text" placeholder="🔍 무엇을 찾으세요?">
+        </div>
+
+        <div class="category-filters">
+            <button class="filter-btn active">전체</button>
+            <button class="filter-btn">🥬 신선식품</button>
+            <button class="filter-btn">💊 건강식품</button>
+        </div>
+
+        <section class="weekly-recommendation">
+            <div class="section-header">
+                <h4>이번 주 추천</h4>
+                <a href="#" class="view-all">더보기 ></a>
+            </div>
+            <div class="featured-item">
+                <img src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="경북 청송 꿀사과">
+                <div class="item-details">
+                    <span class="tag green">산지직송</span>
+                    <h3>경북 청송 꿀사과 3kg</h3>
+                    <p>아침에 먹는 금사과, 당도 보장</p>
+                    <div class="price-info">
+                        <span class="original-price">22,000원</span>
+                        <span class="sale-price">18,900원</span>
+                    </div>
+                </div>
+                <button class="add-to-cart-btn">장바구니 담기</button>
+            </div>
+        </section>
+
+        <section class="popular-items">
+             <div class="section-header">
+                <h4>인기 상품</h4>
+            </div>
+            <div class="item-list">
+                <div class="popular-item">
+                    <img src="https://images.unsplash.com/photo-1607620835449-c06d28054367?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="프리미엄 오메가3">
+                    <div class="item-info">
+                        <span class="tag blue">건강기능</span>
+                        <h5>프리미엄 오메가3</h5>
+                        <p>혈행 개선과 눈 건강에 도움</p>
+                        <span class="price">25,000원</span>
+                    </div>
+                    <button class="buy-now-btn">바로구매</button>
+                </div>
+                <div class="popular-item">
+                    <img src="https://images.unsplash.com/photo-1597362924948-c878ada389f6?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="유기농 쌈채소 모음">
+                    <div class="item-info">
+                        <span class="tag green">친환경</span>
+                        <h5>유기농 쌈채소 모음</h5>
+                        <p>당일 수확, 당일 배송 원칙</p>
+                        <span class="price">8,900원</span>
+                    </div>
+                    <button class="buy-now-btn">바로구매</button>
+                </div>
+                <div class="popular-item">
+                    <img src="https://images.unsplash.com/photo-1556910110-a5a63dfd9125?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="안전 손잡이 식도">
+                     <div class="item-info">
+                        <span class="tag orange">편리함</span>
+                        <h5>안전 손잡이 식도</h5>
+                        <p>손목 부담 없는 인체공학 ...</p>
+                        <span class="price">32,000원</span>
+                    </div>
+                    <button class="buy-now-btn">바로구매</button>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
         <p>&copy; 2024 액티브 시니어. All rights reserved.</p>
     </footer>
+    <script src="health-shop.js"></script>
 </body>
 </html>
