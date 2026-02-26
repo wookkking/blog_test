@@ -7,107 +7,32 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1 class="logo"><a href="index.html">액티브 시니어</a></h1>
-            <nav>
-                <ul>
-                    <li><a href="health-shop.html" class="active">건강 장보기</a></li>
-                    <li><a href="community.html">시니어 소통방</a></li>
-                    <li><a href="health-care.html">건강 관리</a></li>
-                    <li><a href="jobs.html">일자리 찾기</a></li>
-                    <li><a href="leisure.html">여가 활동</a></li>
-                </ul>
-            </nav>
-        </div>
+    <header class="container">
+        <h1 class="logo"><a href="index.html">액티브 시니어</a></h1>
+        <nav>
+            <ul>
+                <li><a href="health-shop.html" class="active">건강 장보기</a></li>
+                <li><a href="community.html">시니어 소통방</a></li>
+                <li><a href="health-care.html">건강 관리</a></li>
+                <li><a href="jobs.html">일자리 찾기</a></li>
+                <li><a href="leisure.html">여가 활동</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <main>
-        <!-- Page Title Section -->
-        <section class="page-title-section text-center">
-            <div class="container">
-                <h2>건강 장보기</h2>
-                <p class="section-intro">엄선된 제품들로 당신의 일상에 활력을 더하세요.</p>
-            </div>
-        </section>
+    <main class="container">
+        <section>
+            <h2>건강 장보기</h2>
+            <p>엄선된 제품들로 당신의 일상에 활력을 더하세요. 신선한 식품부터 꼭 필요한 건강 용품까지, 간편하게 만나보세요.</p>
 
-        <!-- Shop Section -->
-        <section class="content-section">
-            <div class="container">
-                <!-- Controls Bar -->
-                <div class="shop-controls">
-                    <div class="filter-buttons">
-                        <button class="filter-btn active">전체</button>
-                        <button class="filter-btn">신선식품</button>
-                        <button class="filter-btn">건강식품</button>
-                        <button class="filter-btn">생활용품</button>
-                    </div>
-                    <div class="search-form">
-                        <input type="text" placeholder="상품 검색...">
-                        <button type="submit">검색</button>
-                    </div>
-                </div>
-
-                <!-- Products Grid -->
-                <div class="product-grid">
-                    <!-- Product Card 1 -->
-                    <div class="product-card card">
-                        <div class="product-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="경북 청송 꿀사과">
-                        </div>
-                        <div class="product-content">
-                            <span class="product-category">신선식품</span>
-                            <h4>경북 청송 꿀사과 3kg</h4>
-                            <div class="product-price">
-                                <span>18,900원</span>
-                            </div>
-                            <a href="#" class="btn-secondary">장바구니 담기</a>
-                        </div>
-                    </div>
-                    <!-- Product Card 2 -->
-                    <div class="product-card card">
-                        <div class="product-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1607620835449-c06d28054367?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="프리미엄 오메가3">
-                        </div>
-                        <div class="product-content">
-                            <span class="product-category">건강식품</span>
-                            <h4>프리미엄 오메가3</h4>
-                            <div class="product-price">
-                                <span>25,000원</span>
-                            </div>
-                            <a href="#" class="btn-secondary">장바구니 담기</a>
-                        </div>
-                    </div>
-                    <!-- Product Card 3 -->
-                    <div class="product-card card">
-                        <div class="product-image-wrapper">
-                           <img src="https://images.unsplash.com/photo-1597362924948-c878ada389f6?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="유기농 쌈채소 모음">
-                        </div>
-                        <div class="product-content">
-                            <span class="product-category">신선식품</span>
-                            <h4>유기농 쌈채소 모음</h4>
-                            <div class="product-price">
-                                <span>8,900원</span>
-                            </div>
-                            <a href="#" class="btn-secondary">장바구니 담기</a>
-                        </div>
-                    </div>
-                    <!-- Product Card 4 -->
-                    <div class="product-card card">
-                        <div class="product-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1556910110-a5a63dfd9125?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="안전 손잡이 식도">
-                        </div>
-                        <div class="product-content">
-                            <span class="product-category">생활용품</span>
-                            <h4>안전 손잡이 식도</h4>
-                            <div class="product-price">
-                                <span>32,000원</span>
-                            </div>
-                            <a href="#" class="btn-secondary">장바구니 담기</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <h3>판매 상품</h3>
+            <ul class="item-list">
+                <li><strong>경북 청송 GAP 꿀사과 3kg</strong> - 18,900원</li>
+                <li><strong>캐나다산 프리미엄 오메가3</strong> - 25,000원</li>
+                <li><strong>당일 수확 유기농 쌈채소</strong> - 8,900원</li>
+                <li><strong>저염 숙성 국산콩 간장</strong> - 12,000원</li>
+                <li><strong>미끄럼 방지 안전 식도</strong> - 32,000원</li>
+            </ul>
         </section>
     </main>
 

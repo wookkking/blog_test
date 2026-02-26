@@ -7,127 +7,31 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1 class="logo"><a href="index.html">액티브 시니어</a></h1>
-            <nav>
-                <ul>
-                    <li><a href="health-shop.html">건강 장보기</a></li>
-                    <li><a href="community.html">시니어 소통방</a></li>
-                    <li><a href="health-care.html">건강 관리</a></li>
-                    <li><a href="jobs.html" class="active">일자리 찾기</a></li>
-                    <li><a href="leisure.html">여가 활동</a></li>
-                </ul>
-            </nav>
-        </div>
+    <header class="container">
+        <h1 class="logo"><a href="index.html">액티브 시니어</a></h1>
+        <nav>
+            <ul>
+                <li><a href="health-shop.html">건강 장보기</a></li>
+                <li><a href="community.html">시니어 소통방</a></li>
+                <li><a href="health-care.html">건강 관리</a></li>
+                <li><a href="jobs.html" class="active">일자리 찾기</a></li>
+                <li><a href="leisure.html">여가 활동</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <main>
-        <!-- Page Title Section -->
-        <section class="page-title-section text-center">
-            <div class="container">
-                <h2>시니어 맞춤 일자리</h2>
-                <p class="section-intro">당신의 경험과 연륜이 필요한 곳, 새로운 시작을 응원합니다.</p>
-            </div>
-        </section>
+    <main class="container">
+        <section>
+            <h2>시니어 맞춤 일자리</h2>
+            <p>당신의 경험과 연륜이 필요한 곳, 새로운 시작을 응원합니다. 다양한 분야의 채용 공고를 확인해보세요.</p>
 
-        <!-- Jobs Section -->
-        <section class="content-section">
-            <div class="container">
-                <!-- Job Search Form -->
-                <div class="job-search-form card">
-                    <input type="text" placeholder="키워드, 직무, 회사명 등으로 검색해보세요">
-                    <div class="filter-group">
-                        <select>
-                            <option>모든 직종</option>
-                            <option>사무/행정</option>
-                            <option>교육/상담</option>
-                            <option>서비스/판매</option>
-                            <option>생산/기술</option>
-                            <option>운전/배달</option>
-                        </select>
-                        <select>
-                            <option>모든 지역</option>
-                            <option>서울</option>
-                            <option>경기</option>
-                            <option>인천</option>
-                            <option>부산</option>
-                        </select>
-                        <button class="btn-primary">일자리 찾기</button>
-                    </div>
-                </div>
-
-                <!-- Job Listing -->
-                <div class="job-listing">
-                    <!-- Job Card 1 -->
-                    <div class="job-card card">
-                        <div class="job-card-main">
-                            <h4 class="job-title">도서관 사서 보조</h4>
-                            <span class="company-name">시립 중앙 도서관</span>
-                            <div class="job-tags">
-                                <span class="tag">주 3일</span>
-                                <span class="tag">서울 중구</span>
-                                <span class="tag">경력무관</span>
-                            </div>
-                        </div>
-                        <div class="job-card-aside">
-                            <span class="job-salary">월 150만원</span>
-                            <a href="#" class="btn-secondary">상세보기</a>
-                        </div>
-                    </div>
-                    <!-- Job Card 2 -->
-                    <div class="job-card card">
-                        <div class="job-card-main">
-                            <h4 class="job-title">어린이집 등하원 도우미</h4>
-                            <span class="company-name">햇살 어린이집</span>
-                            <div class="job-tags">
-                                <span class="tag">시간제</span>
-                                <span class="tag">경기 성남</span>
-                                <span class="tag">여성우대</span>
-                            </div>
-                        </div>
-                        <div class="job-card-aside">
-                            <span class="job-salary">시급 12,000원</span>
-                            <a href="#" class="btn-secondary">상세보기</a>
-                        </div>
-                    </div>
-                    <!-- Job Card 3 -->
-                    <div class="job-card card">
-                        <div class="job-card-main">
-                            <h4 class="job-title">주말 농장 시설 관리</h4>
-                            <span class="company-name">행복 주말 농장</span>
-                            <div class="job-tags">
-                                <span class="tag">주말근무</span>
-                                <span class="tag">인천 강화</span>
-                                <span class="tag">운전가능</span>
-                            </div>
-                        </div>
-                        <div class="job-card-aside">
-                            <span class="job-salary">일급 100,000원</span>
-                            <a href="#" class="btn-secondary">상세보기</a>
-                        </div>
-                    </div>
-                    <!-- Job Card 4 -->
-                    <div class="job-card card">
-                        <div class="job-card-main">
-                            <h4 class="job-title">사무 보조 (3개월 계약직)</h4>
-                            <span class="company-name">(주) 액티브 라이프</span>
-                            <div class="job-tags">
-                                <span class="tag">계약직</span>
-                                <span class="tag">서울 강남</span>
-                                <span class="tag">컴퓨터활용</span>
-                            </div>
-                        </div>
-                        <div class="job-card-aside">
-                            <span class="job-salary">월 180만원</span>
-                            <a href="#" class="btn-secondary">상세보기</a>
-                        </div>
-                    </div>
-                </div>
-                 <div class="pagination">
-                    <button class="btn-secondary">더보기</button>
-                </div>
-            </div>
+            <h3>채용 공고</h3>
+            <ul class="item-list">
+                <li><strong>도서관 사서 보조</strong> (시립 중앙 도서관, 서울 중구) - 주 3일, 경력무관, 월 150만원</li>
+                <li><strong>어린이집 등하원 도우미</strong> (햇살 어린이집, 경기 성남) - 시간제, 여성우대, 시급 12,000원</li>
+                <li><strong>주말 농장 시설 관리</strong> (행복 주말 농장, 인천 강화) - 주말근무, 운전가능, 일급 100,000원</li>
+                <li><strong>사무 보조 (3개월 계약직)</strong> ((주) 액티브 라이프, 서울 강남) - 컴퓨터활용, 월 180만원</li>
+            </ul>
         </section>
     </main>
 
