@@ -126,6 +126,44 @@ customElements.define('class-card', ClassCard);
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // --- Health Overview Data --- //
+    const healthSummaryData = [
+        {
+            type: 'steps',
+            icon: 'fa-solid fa-person-walking',
+            title: '오늘의 걸음 수',
+            value: '8,210 걸음'
+        },
+        {
+            type: 'blood-pressure',
+            icon: 'fa-solid fa-heart-pulse',
+            title: '최근 혈압',
+            value: '128 / 85 mmHg'
+        },
+        {
+            type: 'blood-sugar',
+            icon: 'fa-solid fa-staff-aesculapius',
+            title: '최근 혈당',
+            value: '102 mg/dL'
+        }
+    ];
+
+    const healthSummaryContainer = document.getElementById('main-health-summary');
+    if (healthSummaryContainer) {
+        healthSummaryData.forEach(item => {
+            const summaryCard = document.createElement('div');
+            summaryCard.className = `summary-card ${item.type}`;
+            summaryCard.innerHTML = `
+                <div class="icon"><i class="${item.icon}"></i></div>
+                <div class="info">
+                    <h4>${item.title}</h4>
+                    <p>${item.value}</p>
+                </div>
+            `;
+            healthSummaryContainer.appendChild(summaryCard);
+        });
+    }
+
     // --- Category Data --- //
     const categories = [
         {

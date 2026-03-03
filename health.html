@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>건강관리 - 시니어라이프</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Chart.js for data visualization -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="health.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="inner">
+            <h1><a href="index.html"><i class="fa-solid fa-person-walking"></i> 시니어라이프</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">홈</a></li>
+                    <li><a href="classes.html">취미 클래스</a></li>
+                    <li><a href="community.html">커뮤니티</a></li>
+                    <li><a href="jobs.html">일자리</a></li>
+                    <li><a href="shopping.html">장보기</a></li>
+                    <li><a href="health.html" class="active">건강관리</a></li>
+                    <li><a href="#">이벤트</a></li>
+                </ul>
+            </nav>
+            <div class="header-utils">
+                <a href="#" class="notification"><i class="fa-solid fa-bell"></i></a>
+                <a href="#" class="profile"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1976&auto=format&fit=crop" alt="프로필 사진"></a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="health-dashboard" class="content-section">
+            <div class="inner">
+                <div class="section-header">
+                    <h3>나의 건강 대시보드</h3>
+                </div>
+
+                <!-- Today's Summary -->
+                <div class="health-summary-container">
+                    <div class="summary-card steps">
+                        <div class="icon"><i class="fa-solid fa-person-walking"></i></div>
+                        <div class="info">
+                            <h4>오늘의 걸음 수</h4>
+                            <p>12,345 걸음</p>
+                        </div>
+                    </div>
+                    <div class="summary-card blood-pressure">
+                        <div class="icon"><i class="fa-solid fa-heart-pulse"></i></div>
+                        <div class="info">
+                            <h4>최근 혈압</h4>
+                            <p>120 / 80 mmHg</p>
+                        </div>
+                    </div>
+                    <div class="summary-card blood-sugar">
+                        <div class="icon"><i class="fa-solid fa-staff-aesculapius"></i></div>
+                        <div class="info">
+                            <h4>최근 혈당</h4>
+                            <p>98 mg/dL</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Input Section -->
+                <div class="health-input-section">
+                    <h4>건강 데이터 기록하기</h4>
+                    <form id="health-form">
+                        <div class="form-group">
+                            <label for="dataType">데이터 종류</label>
+                            <select id="dataType">
+                                <option value="blood-pressure">혈압</option>
+                                <option value="blood-sugar">혈당</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="bp-inputs">
+                            <label>수축기(SYS) / 이완기(DIA)</label>
+                            <div class="input-row">
+                                <input type="number" id="systolic" placeholder="120">
+                                <span>/</span>
+                                <input type="number" id="diastolic" placeholder="80">
+                            </div>
+                        </div>
+                        <div class="form-group" id="bs-input" style="display: none;">
+                            <label for="bloodSugar">공복 혈당 (mg/dL)</label>
+                            <input type="number" id="bloodSugar" placeholder="90">
+                        </div>
+                        <div class="form-group">
+                             <label for="recordDate">측정일</label>
+                             <input type="date" id="recordDate">
+                        </div>
+                        <button type="submit" class="btn primary">기록 추가</button>
+                    </form>
+                </div>
+
+                <!-- Data Visualization -->
+                <div class="health-chart-container">
+                    <h4>건강 데이터 추이</h4>
+                    <canvas id="healthChart"></canvas>
+                </div>
+
+                <!-- Data History -->
+                <div class="health-history">
+                    <h4>기록 전체보기</h4>
+                    <div class="history-list" id="health-history-list">
+                        <!-- Health records will be dynamically inserted here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+       <div class="inner">
+            <div class="footer-top">
+                <div class="footer-logo"><h3><i class="fa-solid fa-person-walking"></i> 시니어라이프</h3></div>
+                <!-- footer content -->
+            </div>
+            <div class="footer-bottom"><p>&copy; 2024 시니어라이프 플랫폼. All rights reserved.</p></div>
+        </div>
+    </footer>
+</body>
+</html>
