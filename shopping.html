@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>일자리 찾기 - 시니어라이프</title>
+    <title>장보기 - 시니어라이프</title>
     <link rel="stylesheet" href="style.css">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <script src="jobs.js" defer></script>
+    <script src="shopping.js" defer></script>
 </head>
 <body>
     <header>
@@ -18,14 +18,14 @@
                     <li><a href="index.html">홈</a></li>
                     <li><a href="classes.html">취미 클래스</a></li>
                     <li><a href="community.html">커뮤니티</a></li>
-                    <li><a href="jobs.html" class="active">일자리</a></li>
-                    <li><a href="#">장보기</a></li>
+                    <li><a href="jobs.html">일자리</a></li>
+                    <li><a href="shopping.html" class="active">장보기</a></li>
                     <li><a href="#">이벤트</a></li>
                 </ul>
             </nav>
             <div class="header-utils">
                 <div class="search-bar">
-                    <input type="text" placeholder="일자리를 찾아보세요...">
+                    <input type="text" placeholder="상품을 검색해보세요...">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </div>
                 <a href="#" class="notification"><i class="fa-solid fa-bell"></i></a>
@@ -35,20 +35,20 @@
     </header>
 
     <main>
-        <section id="job-gallery" class="content-section">
+        <section id="product-gallery" class="content-section">
             <div class="inner">
                 <div class="section-header">
-                    <h3>시니어 맞춤 일자리</h3>
+                    <h3>오늘의 추천 상품</h3>
                 </div>
                 <div class="filters">
                     <button class="filter-btn active" data-filter="all">전체</button>
-                    <button class="filter-btn" data-filter="사무직">사무직</button>
-                    <button class="filter-btn" data-filter="현장직">현장직</button>
-                    <button class="filter-btn" data-filter="재택근무">재택근무</button>
-                    <button class="filter-btn" data-filter="단기">단기</button>
+                    <button class="filter-btn" data-filter="신선식품">신선식품</button>
+                    <button class="filter-btn" data-filter="가공식품">가공식품</button>
+                    <button class="filter-btn" data-filter="생필품">생필품</button>
+                    <button class="filter-btn" data-filter="건강용품">건강용품</button>
                 </div>
-                <div class="card-container" id="job-list">
-                    <!-- Job cards will be injected by jobs.js -->
+                <div class="card-container" id="product-list">
+                    <!-- Product cards will be injected by shopping.js -->
                 </div>
             </div>
         </section>
@@ -72,7 +72,7 @@
                         <a href="classes.html">클래스</a>
                         <a href="community.html">커뮤니티</a>
                         <a href="jobs.html">일자리</a>
-                        <a href="#">쇼핑</a>
+                        <a href="shopping.html">장보기</a>
                     </div>
                     <div class="link-column">
                         <h4>회사 소개</h4>

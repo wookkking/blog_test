@@ -1,122 +1,106 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const tabs = document.querySelectorAll('.tab-btn');
-    const tabContents = document.querySelectorAll('.tab-content');
-    const modal = document.getElementById('post-modal');
-    const newPostBtn = document.getElementById('new-post-btn');
-    const closeBtn = document.querySelector('.close');
-    const postForm = document.getElementById('post-form');
+    const postData = [
+        {
+            author: '행복한 산책가',
+            avatar: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=2080&auto=format&fit=crop',
+            time: '15분 전',
+            category: '자유게시판',
+            title: '오늘 남산 둘레길 같이 걸으실 분 계신가요?',
+            content: '날씨가 너무 좋아서 집에만 있기 아깝네요. 오후 2시에 국립극장 쪽에서 만나서 천천히 한 바퀴 돌고 시원한 냉면 한 그릇 하실 분들 댓글 남겨주세요!',
+            image: 'https://images.unsplash.com/photo-1588632210085-5b8a55c28554?q=80&w=1974&auto=format&fit=crop',
+            likes: 12,
+            comments: 5,
+        },
+        {
+            author: '꽃할매 정원사',
+            avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1974&auto=format&fit=crop',
+            time: '1시간 전',
+            category: '정보공유',
+            title: '베란다에서 상추 키우는 꿀팁 공유합니다',
+            content: '벌써 세 번째 수확했어요! 가장 중요한 건 통풍과 물주기 시간인 것 같아요. 제가 정리한 몇 가지 노하우 보시고 다들 싱싱한 상추 키워보세요.',
+            image: null, // No image for this post
+            likes: 28,
+            comments: 14,
+        },
+        {
+            author: '우리동네 보안관',
+            avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop',
+            time: '3시간 전',
+            category: '동네소식',
+            title: '이번 주말, 동네 플리마켓이 열립니다!',
+            content: '안 입는 옷, 안 쓰는 물건들 가지고 나오셔서 이웃과 정을 나눠보세요. 맛있는 먹거리도 많다고 하니 다들 놀러오세요!',
+            image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1974&auto=format&fit=crop',
+            likes: 45,
+            comments: 18,
+        },
+        {
+            author: '건강지킴이',
+            avatar: 'https://images.unsplash.com/photo-1557862921-37829c790f19?q=80&w=2071&auto=format&fit=crop',
+            time: '5시간 전',
+            category: '건강고민',
+            title: '무릎이 시큰거리는데 좋은 운동 있을까요?',
+            content: '계단 오르내릴 때마다 무릎 통증이 있어서 걱정입니다. 집에서 간단하게 할 수 있는 무릎 강화 운동 아시는 분 계시면 추천 부탁드립니다.',
+            image: null,
+            likes: 33,
+            comments: 22,
+        },
+    ];
+
     const postList = document.getElementById('post-list');
+    const filterButtons = document.querySelectorAll('.filters .filter-btn');
 
-    // 탭 기능
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            tabs.forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
+    function renderPosts(filter = 'all') {
+        postList.innerHTML = '';
+        const filteredPosts = filter === 'all' ? postData : postData.filter(p => p.category === filter);
 
-            const target = tab.dataset.tab;
-            tabContents.forEach(content => {
-                if (content.dataset.tab === target) {
-                    content.classList.add('active');
-                } else {
-                    content.classList.remove('active');
-                }
-            });
-        });
-    });
-
-    // 모달 열기
-    newPostBtn.addEventListener('click', () => {
-        modal.style.display = 'block';
-    });
-
-    // 모달 닫기
-    closeBtn.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
-
-    window.addEventListener('click', (event) => {
-        if (event.target == modal) {
-            modal.style.display = 'none';
+        if (filteredPosts.length === 0) {
+            postList.innerHTML = '<p>아직 게시글이 없습니다.</p>';
+            return;
         }
-    });
 
-    // 게시글 작성 (localStorage 사용)
-    postForm.addEventListener('submit', (e) => {
-        e.preventDefault();
+        filteredPosts.forEach(post => {
+            const postCard = document.createElement('div');
+            postCard.className = 'post-card';
 
-        const title = document.getElementById('post-title').value;
-        const content = document.getElementById('post-content').value;
-
-        const post = {
-            id: Date.now(),
-            author: '새로운 사용자',
-            location: '방금 전',
-            title: title,
-            content: content,
-            likes: 0,
-            comments: 0
-        };
-
-        let posts = JSON.parse(localStorage.getItem('posts')) || [];
-        posts.unshift(post);
-        localStorage.setItem('posts', JSON.stringify(posts));
-
-        modal.style.display = 'none';
-        postForm.reset();
-        loadPosts();
-    });
-
-    // 게시글 불러오기
-    function loadPosts() {
-        let posts = JSON.parse(localStorage.getItem('posts')) || [];
-        postList.innerHTML = ''; // 기존 예시글들은 유지하지 않고 새로 불러옵니다.
-
-        // 예시 게시물들 추가
-        const examplePosts = [
-            {
-                id: 1,
-                author: '산악대장 김철수',
-                location: '1시간 전 | 설악산 대청봉',
-                content: '오늘 날씨가 정말 환상적이네요! 🏔️ 60대에도 이 정도 등반은 거뜬합니다. 다음주 주말 트레킹 모임 함께 하실 분 계신가요? 정상에서 마시는 커피 맛이 꿀맛입니다!',
-                image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-                likes: 128,
-                comments: 34
-            },
-            {
-                id: 2,
-                author: '디지털 노마드 이여사',
-                location: '3시간 전 | 성수동 카페거리',
-                content: '오랜만에 젊음의 거리 성수동에 왔어요. ☕💻 손주에게 배운 영상 편집을 복습하고 있답니다. 배움에는 나이가 없다는 말이 실감나는 오후네요. 다들 맛점 하셨나요?',
-                likes: 97,
-                comments: 21
+            let imageHtml = '';
+            if (post.image) {
+                imageHtml = `<img src="${post.image}" alt="${post.title}">`;
             }
-        ];
 
-        const allPosts = [...examplePosts, ...posts];
-
-        allPosts.forEach(post => {
-            const postElement = document.createElement('div');
-            postElement.classList.add('post');
-            postElement.innerHTML = `
+            postCard.innerHTML = `
                 <div class="post-header">
-                    <img src="https://i.pravatar.cc/50?u=${post.id}" alt="user-avatar" class="avatar">
-                    <div>
-                        <p class="author">${post.author}</p>
-                        <p class="location">${post.location}</p>
+                    <div class="post-author">
+                        <img src="${post.avatar}" alt="${post.author}">
+                        <div class="author-info">
+                            <h5>${post.author}</h5>
+                            <span>${post.time} &middot; ${post.category}</span>
+                        </div>
                     </div>
+                    <div class="post-options"><i class="fa-solid fa-ellipsis-h"></i></div>
                 </div>
-                ${post.title ? `<h3>${post.title}</h3>` : ''}
-                <p>${post.content}</p>
-                ${post.image ? `<img src="${post.image}" alt="post-image" class="post-image">` : ''}
+                <div class="post-body">
+                    <h3>${post.title}</h3>
+                    <p>${post.content}</p>
+                    ${imageHtml}
+                </div>
                 <div class="post-footer">
-                    <span>❤️ 좋아요 ${post.likes}</span>
-                    <span>💬 댓글 ${post.comments}</span>
-                    <span>🔗 공유하기</span>
+                    <button class="action-btn"><i class="fa-solid fa-heart"></i> 좋아요 ${post.likes}</button>
+                    <button class="action-btn"><i class="fa-solid fa-comment"></i> 댓글 달기 ${post.comments}</button>
                 </div>
             `;
-            postList.appendChild(postElement);
+            postList.appendChild(postCard);
         });
     }
 
-    loadPosts();
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            const filter = button.getAttribute('data-filter');
+            renderPosts(filter);
+        });
+    });
+
+    // Initial render
+    renderPosts();
 });

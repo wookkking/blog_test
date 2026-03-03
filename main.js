@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             title: '아침 수채화 교실',
             description: '차분한 수채화의 세계를 탐험하세요. 마음의 평화를 위한 보태니컬 아트와 풍경화에 집중합니다.',
-            image: 'https.images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=2071&auto=format&fit=crop',
+            image: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=2071&auto=format&fit=crop',
             tag: '모든 레벨',
             instructor: '로버트 밴스',
             instructorAvatar: 'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=2070&auto=format&fit=crop',
@@ -207,6 +207,51 @@ document.addEventListener('DOMContentLoaded', () => {
             card.setAttribute('instructor-avatar', item.instructorAvatar);
             card.setAttribute('duration', item.duration);
             cardContainer.appendChild(card);
+        });
+    }
+
+    // --- Community Post Preview Data --- //
+    const postPreviews = [
+        {
+            author: '행복한 산책가',
+            avatar: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=2080&auto=format&fit=crop',
+            time: '15분 전',
+            category: '자유게시판',
+            title: '오늘 남산 둘레길 같이 걸으실 분 계신가요?',
+            likes: 12,
+            comments: 5,
+        },
+        {
+            author: '꽃할매 정원사',
+            avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1974&auto=format&fit=crop',
+            time: '1시간 전',
+            category: '정보공유',
+            title: '베란다에서 상추 키우는 꿀팁 공유합니다',
+            likes: 28,
+            comments: 14,
+        },
+    ];
+
+    const postPreviewContainer = document.getElementById('post-preview-container');
+    if (postPreviewContainer) {
+        postPreviews.slice(0, 2).forEach(post => {
+            const postPreview = document.createElement('div');
+            postPreview.className = 'post-preview-card';
+            postPreview.innerHTML = `
+                <div class="post-author">
+                    <img src="${post.avatar}" alt="${post.author}">
+                    <div class="author-info">
+                        <h5>${post.author}</h5>
+                        <span>${post.time} &middot; ${post.category}</span>
+                    </div>
+                </div>
+                <h4 class="post-title"><a href="community.html">${post.title}</a></h4>
+                <div class="post-meta">
+                    <span><i class="fa-solid fa-heart"></i> ${post.likes}</span>
+                    <span><i class="fa-solid fa-comment"></i> ${post.comments}</span>
+                </div>
+            `;
+            postPreviewContainer.appendChild(postPreview);
         });
     }
 });

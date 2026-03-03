@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>시니어라이프 - 새로운 배움을 시작해보세요</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="community.css">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <script src="main.js" defer></script>
@@ -12,12 +13,14 @@
 <body>
     <header>
         <div class="inner">
-            <h1><a href="#"><i class="fa-solid fa-person-walking"></i> 시니어라이프</a></h1>
+            <h1><a href="index.html"><i class="fa-solid fa-person-walking"></i> 시니어라이프</a></h1>
             <nav>
                 <ul>
-                    <li><a href="#">홈</a></li>
+                    <li><a href="index.html" class="active">홈</a></li>
                     <li><a href="classes.html">취미 클래스</a></li>
-                    <li><a href="#">커뮤니티</a></li>
+                    <li><a href="community.html">커뮤니티</a></li>
+                    <li><a href="jobs.html">일자리</a></li>
+                    <li><a href="shopping.html">장보기</a></li>
                     <li><a href="#">이벤트</a></li>
                 </ul>
             </nav>
@@ -51,10 +54,10 @@
             <div class="inner">
                 <div class="section-header">
                     <h3>카테고리별 탐색</h3>
-                    <a href="#" class="more">전체 보기 &rarr;</a>
+                    <a href="classes.html" class="more">전체 보기 &rarr;</a>
                 </div>
                 <div class="category-container">
-                    <!-- Category items will be injected by JS or hardcoded -->
+                    <!-- Category items will be injected by JS -->
                 </div>
             </div>
         </section>
@@ -63,10 +66,22 @@
             <div class="inner">
                 <div class="section-header">
                     <h3>추천 클래스</h3>
-                    <a href="#" class="more">전체 보기 &rarr;</a>
+                    <a href="classes.html" class="more">전체 보기 &rarr;</a>
                 </div>
                 <div class="card-container">
                     <!-- Class cards will be injected by main.js -->
+                </div>
+            </div>
+        </section>
+
+        <section id="community-preview" class="content-section">
+            <div class="inner">
+                <div class="section-header">
+                    <h3>최신 커뮤니티 글</h3>
+                    <a href="community.html" class="more">더보기 &rarr;</a>
+                </div>
+                <div class="post-preview-container" id="post-preview-container">
+                    <!-- Community post previews will be injected by main.js -->
                 </div>
             </div>
         </section>
@@ -87,8 +102,10 @@
                 <div class="footer-links">
                     <div class="link-column">
                         <h4>플랫폼</h4>
-                        <a href="#">클래스</a>
-                        <a href="#">커뮤니티</a>
+                        <a href="classes.html">클래스</a>
+                        <a href="community.html">커뮤니티</a>
+                        <a href="jobs.html">일자리</a>
+                        <a href="shopping.html">장보기</a>
                         <a href="#">성공 스토리</a>
                     </div>
                     <div class="link-column">
