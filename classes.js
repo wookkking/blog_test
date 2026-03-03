@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             title: '영상 통화 마스터하기',
             description: '줌, 페이스타임, 와츠앱으로 손주들과 쉽게 소통하는 방법을 단계별로 배워보세요.',
-            image: 'https://images.unsplash.com/photo-1616587896649-7c211a13a726?q=80&w=2070&auto=format&fit=crop',
+            image: 'https://images.unsplash.com/photo-1592495984998-a1c9d9ae75a8?q=80&w=2070&auto=format&fit=crop',
             tag: '초보 환영',
             instructor: '사라 밀러',
             instructorAvatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop',
