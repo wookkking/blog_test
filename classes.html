@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>취미 클래스 - 시니어라이프</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <script src="main.js" defer></script> <!-- Reusing the component definition -->
     <script src="classes.js" defer></script> <!-- Page-specific script -->
+    <script src="navigation.js" defer></script>
 </head>
 <body>
     <header>
@@ -17,18 +17,16 @@
             <nav>
                 <ul>
                     <li><a href="index.html">홈</a></li>
-                    <li><a href="classes.html" class="active">취미 클래스</a></li>
-                    <li><a href="#">커뮤니티</a></li>
-                    <li><a href="#">이벤트</a></li>
+                    <li><a href="classes.html">취미 클래스</a></li>
+                    <li><a href="community.html">커뮤니티</a></li>
+                    <li><a href="jobs.html">일자리</a></li>
+                    <li><a href="shopping.html">장보기</a></li>
+                    <li><a href="health.html">건강관리</a></li>
                 </ul>
             </nav>
             <div class="header-utils">
-                <div class="search-bar">
-                    <input type="text" placeholder="취미를 찾아보세요...">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
                 <a href="#" class="notification"><i class="fa-solid fa-bell"></i></a>
-                <a href="#" class="profile"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1976&auto=format&fit=crop" alt="프로필 사진"></a>
+                <a href="#" class="profile"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.0.3" alt="프로필 사진"></a>
             </div>
         </div>
     </header>
@@ -68,9 +66,12 @@
                 <div class="footer-links">
                     <div class="link-column">
                         <h4>플랫폼</h4>
-                        <a href="#">클래스</a>
-                        <a href="#">커뮤니티</a>
-                        <a href="#">성공 스토리</a>
+                        <a href="index.html">홈</a>
+                        <a href="classes.html">취미 클래스</a>
+                        <a href="community.html">커뮤니티</a>
+                        <a href="jobs.html">일자리</a>
+                        <a href="shopping.html">장보기</a>
+                        <a href="health.html">건강관리</a>
                     </div>
                     <div class="link-column">
                         <h4>회사 소개</h4>
@@ -87,7 +88,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 시니어라이프 플랫폼. All rights reserved. 액티브 시니어를 위한 디자인.</p>
+                <p>&copy; 2024 시니어라이프 플랫폼. All rights reserved.</p>
             </div>
         </div>
     </footer>

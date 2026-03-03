@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>건강관리 - 시니어라이프</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <!-- Chart.js for data visualization -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="health.js" defer></script>
+    <script src="navigation.js" defer></script>
 </head>
 <body>
     <header>
@@ -22,13 +21,12 @@
                     <li><a href="community.html">커뮤니티</a></li>
                     <li><a href="jobs.html">일자리</a></li>
                     <li><a href="shopping.html">장보기</a></li>
-                    <li><a href="health.html" class="active">건강관리</a></li>
-                    <li><a href="#">이벤트</a></li>
+                    <li><a href="health.html">건강관리</a></li>
                 </ul>
             </nav>
             <div class="header-utils">
                 <a href="#" class="notification"><i class="fa-solid fa-bell"></i></a>
-                <a href="#" class="profile"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1976&auto=format&fit=crop" alt="프로필 사진"></a>
+                <a href="#" class="profile"><img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.0.3" alt="프로필 사진"></a>
             </div>
         </div>
     </header>
@@ -72,11 +70,12 @@
                         <div class="form-group">
                             <label for="dataType">데이터 종류</label>
                             <select id="dataType">
+                                <option value="steps">걸음 수</option>
                                 <option value="blood-pressure">혈압</option>
                                 <option value="blood-sugar">혈당</option>
                             </select>
                         </div>
-                        <div class="form-group" id="bp-inputs">
+                        <div class="form-group" id="bp-inputs" style="display: none;">
                             <label>수축기(SYS) / 이완기(DIA)</label>
                             <div class="input-row">
                                 <input type="number" id="systolic" placeholder="120">
@@ -87,6 +86,10 @@
                         <div class="form-group" id="bs-input" style="display: none;">
                             <label for="bloodSugar">공복 혈당 (mg/dL)</label>
                             <input type="number" id="bloodSugar" placeholder="90">
+                        </div>
+                         <div class="form-group" id="steps-input">
+                            <label for="steps">걸음 수</label>
+                            <input type="number" id="steps-count" placeholder="8000">
                         </div>
                         <div class="form-group">
                              <label for="recordDate">측정일</label>
@@ -116,10 +119,42 @@
     <footer>
        <div class="inner">
             <div class="footer-top">
-                <div class="footer-logo"><h3><i class="fa-solid fa-person-walking"></i> 시니어라이프</h3></div>
-                <!-- footer content -->
+                <div class="footer-logo">
+                    <h3><i class="fa-solid fa-person-walking"></i> 시니어라이프</h3>
+                    <p>평생 학습과 커뮤니티 참여를 통해 시니어들이 활동적이고 연결된, 충만한 삶을 영위할 수 있도록 돕습니다.</p>
+                     <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-solid fa-blog"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="link-column">
+                        <h4>플랫폼</h4>
+                        <a href="index.html">홈</a>
+                        <a href="classes.html">취미 클래스</a>
+                        <a href="community.html">커뮤니티</a>
+                        <a href="jobs.html">일자리</a>
+                        <a href="shopping.html">장보기</a>
+                        <a href="health.html">건강관리</a>
+                    </div>
+                    <div class="link-column">
+                        <h4>회사 소개</h4>
+                        <a href="#">회사 개요</a>
+                        <a href="#">채용</a>
+                        <a href="#">블로그</a>
+                    </div>
+                    <div class="link-column">
+                        <h4>고객 지원</h4>
+                        <a href="#">헬프 센터</a>
+                        <a href="#">개인정보 처리방침</a>
+                        <a href="#">문의하기</a>
+                    </div>
+                </div>
             </div>
-            <div class="footer-bottom"><p>&copy; 2024 시니어라이프 플랫폼. All rights reserved.</p></div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 시니어라이프 플랫폼. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 </body>
