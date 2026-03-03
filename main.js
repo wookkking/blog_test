@@ -1,4 +1,4 @@
-class CustomCard extends HTMLElement {
+class ClassCard extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
@@ -6,47 +6,115 @@ class CustomCard extends HTMLElement {
 
     connectedCallback() {
         const template = document.createElement('template');
+        const tagBgColor = this.getAttribute('tag') === '현재 실시간' ? '#ff6b6b' : '#555';
         template.innerHTML = `
             <style>
                 :host {
-                    display: flex;
-                    flex-direction: column;
-                    height: 100%;
+                    display: block;
+                    background: var(--white-color, #fff);
+                    border-radius: 15px;
+                    border: 1px solid var(--border-color, #e9ecef);
+                    overflow: hidden;
+                    transition: transform 0.3s, box-shadow 0.3s;
+                    cursor: pointer;
+                }
+                :host(:hover) {
+                    transform: translateY(-5px);
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                }
+                .card-image-wrapper {
+                    position: relative;
+                    width: 100%;
+                    height: 200px;
                 }
                 .card-image {
                     width: 100%;
-                    height: 180px;
+                    height: 100%;
                     object-fit: cover;
+                }
+                .tag {
+                    position: absolute;
+                    top: 15px;
+                    left: 15px;
+                    background-color: ${tagBgColor};
+                    color: #fff;
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    font-size: 13px;
+                    font-weight: 700;
+                }
+                 .instructor {
+                    position: absolute;
+                    bottom: 10px;
+                    left: 15px;
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    color: white;
+                    font-size: 14px;
+                    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+                }
+                .instructor img {
+                    width: 24px;
+                    height: 24px;
+                    border-radius: 50%;
+                    border: 1px solid #fff;
                 }
                 .card-content {
                     padding: 20px;
-                    flex-grow: 1;
-                    display: flex;
-                    flex-direction: column;
                 }
                 .card-title {
                     font-size: 20px;
                     font-weight: 700;
                     margin-bottom: 10px;
-                    color: #333;
+                    color: var(--text-color, #333);
                 }
                 .card-description {
-                    font-size: 16px;
-                    color: #666;
-                    flex-grow: 1;
+                    font-size: 15px;
+                    color: var(--text-secondary, #555);
                     margin-bottom: 20px;
+                    height: 45px; /* Clamp to 2 lines */
+                    overflow: hidden;
                 }
                 .card-footer {
-                    font-size: 14px;
-                    color: #999;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding-top: 15px;
+                    border-top: 1px solid var(--border-color, #e9ecef);
+                }
+                .duration, .action .btn-apply {
+                     font-size: 15px;
+                     font-weight: 500;
+                }
+                .btn-apply {
+                    background-color: var(--dark-blue, #2c3e50);
+                    color: #fff;
+                    padding: 10px 20px;
+                    border-radius: 8px;
+                    text-align: center;
+                    transition: background-color 0.3s;
+                }
+                .btn-apply:hover {
+                    background-color: #455a64;
                 }
             </style>
-            <img class="card-image" src="${this.getAttribute('image')}" alt="${this.getAttribute('title')}">
+            <div class="card-image-wrapper">
+                <img class="card-image" src="${this.getAttribute('image')}" alt="${this.getAttribute('title')}">
+                <span class="tag">${this.getAttribute('tag')}</span>
+                <div class="instructor">
+                    <img src="${this.getAttribute('instructor-avatar')}" alt="${this.getAttribute('instructor')}">
+                    <span>강사: ${this.getAttribute('instructor')}</span>
+                </div>
+            </div>
             <div class="card-content">
                 <h4 class="card-title">${this.getAttribute('title')}</h4>
                 <p class="card-description">${this.getAttribute('description')}</p>
                 <div class="card-footer">
-                    <span>${this.getAttribute('footer')}</span>
+                    <span class="duration">소요시간: ${this.getAttribute('duration')}</span>
+                    <div class="action">
+                         <a href="#" class="btn-apply">수강 신청하기</a>
+                    </div>
                 </div>
             </div>
         `;
@@ -54,116 +122,91 @@ class CustomCard extends HTMLElement {
     }
 }
 
-customElements.define('custom-card', CustomCard);
-
+customElements.define('class-card', ClassCard);
 
 document.addEventListener('DOMContentLoaded', () => {
-    const sections = {
-        jobs: {
-            container: document.querySelector('#jobs .card-container'),
-            data: [
-                {
-                    title: '시니어 바리스타',
-                    description: '향긋한 커피와 함께 인생 2막을 시작하세요. 주 3회, 유연 근무 가능.',
-                    image: 'https://images.unsplash.com/photo-1559925393-8be0ec4767c8?q=80&w=1974&auto=format&fit=crop',
-                    footer: '서울시 강남구 | 월 150만원'
-                },
-                {
-                    title: '아이 돌보미',
-                    description: '아이들의 성장을 돕는 보람 있는 일, 당신의 따뜻한 마음이 필요합니다.',
-                    image: 'https://images.unsplash.com/photo-1518833162-0143891c5cbf?q=80&w=2070&auto=format&fit=crop',
-                    footer: '전국 | 시급 12,000원'
-                },
-                {
-                    title: '공예 강사',
-                    description: '자신만의 손재주를 나누고 수강생들과 소통하며 즐거움을 찾아보세요.',
-                    image: 'https://images.unsplash.com/photo-1610424213739-446a782a1c22?q=80&w=2070&auto=format&fit=crop',
-                    footer: '온라인/오프라인 | 협의'
-                }
-            ]
-        },
-        classes: {
-            container: document.querySelector('#classes .card-container'),
-            data: [
-                {
-                    title: '스마트폰 활용 교실',
-                    description: '손주와 영상통화, 온라인 쇼핑까지! 스마트폰 완전 정복 프로젝트.',
-                    image: 'https://images.unsplash.com/photo-1585060544838-c5b6b379b3a3?q=80&w=2070&auto=format&fit=crop',
-                    footer: '매주 화요일 | 30,000원'
-                },
-                {
-                    title: '노래 교실',
-                    description: '신나는 트로트부터 감성 발라드까지, 스트레스를 날려버리세요.',
-                    image: 'https://images.unsplash.com/photo-1589578523447-731b1b9d4a46?q=80&w=2070&auto=format&fit=crop',
-                    footer: '매주 금요일 | 20,000원'
-                },
-                 {
-                    title: '몸펴기 생활운동',
-                    description: '굳은 몸을 풀어주고 활력을 되찾는 시간, 건강한 노년을 준비하세요.',
-                    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=2120&auto=format&fit=crop',
-                    footer: '상시 모집 | 무료'
-                }
-            ]
-        },
-        community: {
-            container: document.querySelector('#community .card-container'),
-            data: [
-                 {
-                    title: '등산 동호회 '산울림'',
-                    description: '매주 주말, 서울 근교의 아름다운 산을 함께 오릅니다.',
-                    image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop',
-                    footer: '활동 지역: 서울/경기'
-                },
-                {
-                    title: ''맛있는 인생' 요리 모임',
-                    description: '나만의 특별한 레시피를 공유하고, 함께 맛있는 음식을 만들어봐요.',
-                    image: 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=80&w=2070&auto=format&fit=crop',
-                    footer: '매월 셋째 주 토요일'
-                },
-                {
-                    title: '여행 스케치',
-                    description: '그림을 그리며 여행의 감동을 두 배로! 초보자도 환영합니다.',
-                    image: 'https://images.unsplash.com/photo-1530521954074-e64f6810b32d?q=80&w=2070&auto=format&fit=crop',
-                    footer: '분기별 1회 정기 출사'
-                }
-            ]
-        },
-        market: {
-            container: document.querySelector('#market .card-container'),
-            data: [
-                {
-                    title: '유기농 채소 꾸러미',
-                    description: '제철을 맞은 신선한 유기농 채소를 집 앞까지 배송해 드립니다.',
-                    image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1974&auto=format&fit=crop',
-                    footer: '주 1회 | 25,000원'
-                },
-                {
-                    title: '국내산 제철 과일',
-                    description: '산지 직송으로 더욱 신선하고 맛있는 제철 과일을 만나보세요.',
-                    image: 'https://images.unsplash.com/photo-1594261713555-9b27a3a3a93c?q=80&w=2050&auto=format&fit=crop',
-                    footer: '상시 판매'
-                },
-                {
-                    title: '건강 보조 식품',
-                    description: '부족한 영양을 채워 활기찬 하루를 만드는 건강 보조 식품 모음.',
-                    image: 'https://images.unsplash.com/photo-1607619056574-7d8d3ee536b2?q=80&w=2146&auto=format&fit=crop',
-                    footer: '특별 할인가'
-                }
-            ]
-        }
-    };
 
-    for (const section in sections) {
-        const { container, data } = sections[section];
-        if (container) {
-            data.forEach(item => {
-                const card = document.createElement('custom-card');
-                card.setAttribute('title', item.title);
-                card.setAttribute('description', item.description);
-                card.setAttribute('image', item.image);
-                card.setAttribute('footer', item.footer);
-                container.appendChild(card);
-            });
+    // --- Category Data --- //
+    const categories = [
+        {
+            icon: 'fa-solid fa-mobile-screen-button',
+            title: '디지털/스마트폰',
+            description: '기기 사용법 마스터하기'
+        },
+        {
+            icon: 'fa-solid fa-person-praying',
+            title: '건강/요가',
+            description: '유연하고 튼튼하게'
+        },
+        {
+            icon: 'fa-solid fa-palette',
+            title: '미술/캘리그래피',
+            description: '나만의 창의성 표현하기'
+        },
+        {
+            icon: 'fa-solid fa-music',
+            title: '음악/악기',
+            description: '나만의 리듬 찾기'
+        },
+    ];
+
+    const categoryContainer = document.querySelector('#categories .category-container');
+    if (categoryContainer) {
+        categories.forEach(cat => {
+            const item = document.createElement('div');
+            item.className = 'category-item';
+            item.innerHTML = `
+                <div class="icon"><i class="${cat.icon}"></i></div>
+                <h4>${cat.title}</h4>
+                <p>${cat.description}</p>
+            `;
+            categoryContainer.appendChild(item);
+        });
+    }
+
+    // --- Recommended Classes Data --- //
+    const classes = [
+        {
+            title: '기초 의자 요가',
+            description: '앉은 자세에서 할 수 있는 부드러운 스트레칭과 가동성 운동입니다. 데일리 웰니스에 완벽합니다.',
+            image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=2120&auto=format&fit=crop',
+            tag: '초보 환영',
+            instructor: '아서 첸 교수',
+            instructorAvatar: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=1974&auto=format&fit=crop',
+            duration: '45분'
+        },
+        {
+            title: '영상 통화 마스터하기',
+            description: '줌, 페이스타임, 와츠앱으로 손주들과 쉽게 소통하는 방법을 단계별로 배워보세요.',
+            image: 'https://images.unsplash.com/photo-1616587896649-7c211a13a726?q=80&w=2070&auto=format&fit=crop',
+            tag: '초보 환영',
+            instructor: '사라 밀러',
+            instructorAvatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=1961&auto=format&fit=crop',
+            duration: '60분'
+        },
+        {
+            title: '아침 수채화 교실',
+            description: '차분한 수채화의 세계를 탐험하세요. 마음의 평화를 위한 보태니컬 아트와 풍경화에 집중합니다.',
+            image: 'https.images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=2071&auto=format&fit=crop',
+            tag: '모든 레벨',
+            instructor: '로버트 밴스',
+            instructorAvatar: 'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=2070&auto=format&fit=crop',
+            duration: '90분'
         }
+    ];
+
+    const cardContainer = document.querySelector('#classes .card-container');
+    if (cardContainer) {
+        classes.forEach(item => {
+            const card = document.createElement('class-card');
+            card.setAttribute('title', item.title);
+            card.setAttribute('description', item.description);
+            card.setAttribute('image', item.image);
+            card.setAttribute('tag', item.tag);
+            card.setAttribute('instructor', item.instructor);
+            card.setAttribute('instructor-avatar', item.instructorAvatar);
+            card.setAttribute('duration', item.duration);
+            cardContainer.appendChild(card);
+        });
     }
 });

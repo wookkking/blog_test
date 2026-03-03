@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>시니어라이프 - 새로운 배움을 시작해보세요</title>
+    <title>취미 클래스 - 시니어라이프</title>
     <link rel="stylesheet" href="style.css">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <script src="main.js" defer></script>
+    <script src="main.js" defer></script> <!-- Reusing the component definition -->
+    <script src="classes.js" defer></script> <!-- Page-specific script -->
 </head>
 <body>
     <header>
         <div class="inner">
-            <h1><a href="#"><i class="fa-solid fa-person-walking"></i> 시니어라이프</a></h1>
+            <h1><a href="index.html"><i class="fa-solid fa-person-walking"></i> 시니어라이프</a></h1>
             <nav>
                 <ul>
-                    <li><a href="#">홈</a></li>
-                    <li><a href="classes.html">취미 클래스</a></li>
+                    <li><a href="index.html">홈</a></li>
+                    <li><a href="classes.html" class="active">취미 클래스</a></li>
                     <li><a href="#">커뮤니티</a></li>
                     <li><a href="#">이벤트</a></li>
                 </ul>
@@ -33,47 +34,27 @@
     </header>
 
     <main>
-        <section id="hero">
-            <div class="inner">
-                <div class="hero-content">
-                    <span class="tag">봄 시즌 신규 강좌</span>
-                    <h2>오늘 새로운 배움을<br>시작해보세요!</h2>
-                    <p>당신의 라이프스타일과 관심사에 맞춘 즐거운 취미 클래스를 만나보세요. 평생 학습의 즐거움을 함께 나눕니다.</p>
-                    <div class="buttons">
-                        <a href="classes.html" class="btn primary">클래스 탐색하기</a>
-                        <a href="#" class="btn secondary">무료 체험하기</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="categories" class="content-section">
+        <section id="class-gallery" class="content-section">
             <div class="inner">
                 <div class="section-header">
-                    <h3>카테고리별 탐색</h3>
-                    <a href="#" class="more">전체 보기 &rarr;</a>
+                    <h3>전체 클래스</h3>
                 </div>
-                <div class="category-container">
-                    <!-- Category items will be injected by JS or hardcoded -->
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">전체</button>
+                    <button class="filter-btn" data-filter="디지털/스마트폰">디지털/스마트폰</button>
+                    <button class="filter-btn" data-filter="건강/요가">건강/요가</button>
+                    <button class="filter-btn" data-filter="미술/캘리그래피">미술/캘리그래피</button>
+                    <button class="filter-btn" data-filter="음악/악기">음악/악기</button>
                 </div>
-            </div>
-        </section>
-
-        <section id="classes" class="content-section">
-            <div class="inner">
-                <div class="section-header">
-                    <h3>추천 클래스</h3>
-                    <a href="#" class="more">전체 보기 &rarr;</a>
-                </div>
-                <div class="card-container">
-                    <!-- Class cards will be injected by main.js -->
+                <div class="card-container" id="class-list">
+                    <!-- Class cards will be injected by classes.js -->
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <div class="inner">
+       <div class="inner">
             <div class="footer-top">
                 <div class="footer-logo">
                     <h3><i class="fa-solid fa-person-walking"></i> 시니어라이프</h3>
@@ -110,6 +91,5 @@
             </div>
         </div>
     </footer>
-
 </body>
 </html>
