@@ -1,14 +1,103 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>청춘누리 - 액티브 시니어를 위한 종합 포털</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+    <header>
+        <div class="logo">청춘누리</div>
+        <nav>
+            <ul>
+                <li><a href="#health">건강</a></li>
+                <li><a href="#jobs">일자리</a></li>
+                <li><a href="#classes">배움</a></li>
+                <li><a href="#community">커뮤니티</a></li>
+                <li><a href="#market">장보기</a></li>
+            </ul>
+        </nav>
+        <div class="user-menu">
+            <span class="material-symbols-outlined">notifications</span>
+            <span class="material-symbols-outlined">account_circle</span>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <h1>김길동님, 안녕하세요!</h1>
+            <p>오늘도 건강하고 활기찬 하루 되세요.</p>
+        </section>
+
+        <section id="health">
+            <h2>건강 리포트</h2>
+            <div class="health-container">
+                <div class="health-card activity">
+                    <h3>오늘의 활동량</h3>
+                    <div class="chart">
+                        <div class="progress-circle" style="--progress: 69;">
+                            <span>69%</span>
+                        </div>
+                        <p><strong>3,450</strong> / 5,000 걸음</p>
+                    </div>
+                    <button>상세 리포트 보기</button>
+                </div>
+                <div class="health-card habits">
+                    <h3>건강 습관 체크</h3>
+                    <ul>
+                        <li>물 마시기 (5/8잔) <span class="material-symbols-outlined check-done">check_circle</span></li>
+                        <li>혈압약 복용 <span class="material-symbols-outlined check-done">check_circle</span></li>
+                    </ul>
+                </div>
+                <div class="health-card trend">
+                    <h3>주간 건강 트렌드</h3>
+                    <div class="bar-chart">
+                        <div class="bar" style="height: 60%;"><span>월</span></div>
+                        <div class="bar" style="height: 80%;"><span>화</span></div>
+                        <div class="bar" style="height: 50%;"><span>수</span></div>
+                        <div class="bar" style="height: 100%;"><span>목</span></div>
+                        <div class="bar" style="height: 70%;"><span>금</span></div>
+                        <div class="bar" style="height: 40%;"><span>토</span></div>
+                        <div class="bar" style="height: 90%;"><span>일</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="jobs">
+            <h2>새로운 시작, 맞춤 일자리</h2>
+            <div class="card-container">
+                </div>
+        </section>
+
+        <section id="classes">
+            <h2>배움의 즐거움, 새로운 취미</h2>
+            <div class="card-container">
+                </div>
+        </section>
+
+        <section id="community">
+            <h2>이웃과 나누는 따뜻한 이야기</h2>
+            <div class="card-container">
+                </div>
+        </section>
+
+        <section id="market">
+            <h2>신선하고 건강한 장보기</h2>
+            <div class="card-container">
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2024 청춘누리. All rights reserved.</p>
+            <p>회사 소개 | 이용약관 | 개인정보처리방침</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
 </body>
 </html>
