@@ -5,212 +5,165 @@ class CustomCard extends HTMLElement {
     }
 
     connectedCallback() {
-        const type = this.getAttribute('type') || 'default';
-        const image = this.getAttribute('image');
-        const title = this.getAttribute('title');
-        const meta = this.getAttribute('meta');
-        const content_text = this.getAttribute('content_text');
-        const price = this.getAttribute('price');
-        const button_text = this.getAttribute('button_text');
-
-        const style = `
-            :host {
-                display: flex;
-                flex-direction: column;
-                background-color: #fff;
-                border-radius: 12px;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-                overflow: hidden;
-                transition: transform 0.3s ease, box-shadow 0.3s ease;
-            }
-            :host(:hover) {
-                transform: translateY(-5px);
-                box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-            }
-            img {
-                width: 100%;
-                height: 180px;
-                object-fit: cover;
-            }
-            .content {
-                padding: 1.5rem;
-                display: flex;
-                flex-direction: column;
-                flex-grow: 1;
-            }
-            h3 {
-                font-size: 1.3rem;
-                margin: 0 0 0.5rem 0;
-                color: #2C3E50;
-            }
-            .meta {
-                font-size: 0.9rem;
-                color: #777;
-                margin-bottom: 1rem;
-            }
-            .content-text {
-                color: #333;
-                margin-bottom: 1rem;
-                line-height: 1.5;
-            }
-            .price {
-                font-size: 1.2rem;
-                font-weight: 700;
-                color: #333;
-                margin-bottom: 1rem;
-            }
-            .community-footer {
-                display: flex;
-                gap: 1rem;
-                color: #777;
-                margin-top: auto;
-            }
-            button {
-                width: 100%;
-                padding: 0.75rem;
-                background-color: #2C3E50;
-                color: white;
-                border: none;
-                border-radius: 8px;
-                cursor: pointer;
-                font-size: 1rem;
-                font-weight: 600;
-                transition: background-color 0.3s ease;
-                margin-top: auto;
-            }
-            button:hover {
-                background-color: #1a2533;
-            }
-        `;
-
-        let innerHTML = `
-            ${image ? `<img src="${image}" alt="${title}">` : ''}
-            <div class="content">
-                ${title ? `<h3>${title}</h3>` : ''}
-                ${meta ? `<div class="meta">${meta}</div>` : ''}
-                ${content_text ? `<p class="content-text">${content_text}</p>` : ''}
-                ${price ? `<div class="price">${price}</div>` : ''}
-        `;
-
-        if (type === 'community') {
-            innerHTML += `
-                <div class="community-footer">
-                    <span>좋아요 12</span>
-                    <span>댓글 5</span>
+        const template = document.createElement('template');
+        template.innerHTML = `
+            <style>
+                :host {
+                    display: flex;
+                    flex-direction: column;
+                    height: 100%;
+                }
+                .card-image {
+                    width: 100%;
+                    height: 180px;
+                    object-fit: cover;
+                }
+                .card-content {
+                    padding: 20px;
+                    flex-grow: 1;
+                    display: flex;
+                    flex-direction: column;
+                }
+                .card-title {
+                    font-size: 20px;
+                    font-weight: 700;
+                    margin-bottom: 10px;
+                    color: #333;
+                }
+                .card-description {
+                    font-size: 16px;
+                    color: #666;
+                    flex-grow: 1;
+                    margin-bottom: 20px;
+                }
+                .card-footer {
+                    font-size: 14px;
+                    color: #999;
+                }
+            </style>
+            <img class="card-image" src="${this.getAttribute('image')}" alt="${this.getAttribute('title')}">
+            <div class="card-content">
+                <h4 class="card-title">${this.getAttribute('title')}</h4>
+                <p class="card-description">${this.getAttribute('description')}</p>
+                <div class="card-footer">
+                    <span>${this.getAttribute('footer')}</span>
                 </div>
-            `;
-        } else {
-            innerHTML += `<button>${button_text || '자세히 보기'}</button>`;
-        }
-
-        innerHTML += `</div>`;
-
-        this.shadowRoot.innerHTML = `
-            <style>${style}</style>
-            ${innerHTML}
+            </div>
         `;
+        this.shadowRoot.appendChild(template.content.cloneNode(true));
     }
 }
 
 customElements.define('custom-card', CustomCard);
 
+
 document.addEventListener('DOMContentLoaded', () => {
-    const jobsData = [
-        {
-            image: 'https://images.unsplash.com/photo-1558021211-6514f4939332?q=80&w=2070&auto=format&fit=crop',
-            title: '도서관 보조',
-            meta: '아르바이트 | 2시간 전',
-            price: '시급 12,000원',
-            button_text: '지원하기'
+    const sections = {
+        jobs: {
+            container: document.querySelector('#jobs .card-container'),
+            data: [
+                {
+                    title: '시니어 바리스타',
+                    description: '향긋한 커피와 함께 인생 2막을 시작하세요. 주 3회, 유연 근무 가능.',
+                    image: 'https://images.unsplash.com/photo-1559925393-8be0ec4767c8?q=80&w=1974&auto=format&fit=crop',
+                    footer: '서울시 강남구 | 월 150만원'
+                },
+                {
+                    title: '아이 돌보미',
+                    description: '아이들의 성장을 돕는 보람 있는 일, 당신의 따뜻한 마음이 필요합니다.',
+                    image: 'https://images.unsplash.com/photo-1518833162-0143891c5cbf?q=80&w=2070&auto=format&fit=crop',
+                    footer: '전국 | 시급 12,000원'
+                },
+                {
+                    title: '공예 강사',
+                    description: '자신만의 손재주를 나누고 수강생들과 소통하며 즐거움을 찾아보세요.',
+                    image: 'https://images.unsplash.com/photo-1610424213739-446a782a1c22?q=80&w=2070&auto=format&fit=crop',
+                    footer: '온라인/오프라인 | 협의'
+                }
+            ]
         },
-        {
-            image: 'https://images.unsplash.com/photo-1531804055935-76742b884592?q=80&w=1974&auto=format&fit=crop',
-            title: '생태 가이드',
-            meta: '계약직 | 5시간 전',
-            price: '시급 15,000원',
-            button_text: '지원하기'
+        classes: {
+            container: document.querySelector('#classes .card-container'),
+            data: [
+                {
+                    title: '스마트폰 활용 교실',
+                    description: '손주와 영상통화, 온라인 쇼핑까지! 스마트폰 완전 정복 프로젝트.',
+                    image: 'https://images.unsplash.com/photo-1585060544838-c5b6b379b3a3?q=80&w=2070&auto=format&fit=crop',
+                    footer: '매주 화요일 | 30,000원'
+                },
+                {
+                    title: '노래 교실',
+                    description: '신나는 트로트부터 감성 발라드까지, 스트레스를 날려버리세요.',
+                    image: 'https://images.unsplash.com/photo-1589578523447-731b1b9d4a46?q=80&w=2070&auto=format&fit=crop',
+                    footer: '매주 금요일 | 20,000원'
+                },
+                 {
+                    title: '몸펴기 생활운동',
+                    description: '굳은 몸을 풀어주고 활력을 되찾는 시간, 건강한 노년을 준비하세요.',
+                    image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=2120&auto=format&fit=crop',
+                    footer: '상시 모집 | 무료'
+                }
+            ]
         },
-        {
-            image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=2069&auto=format&fit=crop',
-            title: '시니어 비즈니스 컨설턴트',
-            meta: '정규직 | 1일 전',
-            price: '시급 45,000원',
-            button_text: '지원하기'
+        community: {
+            container: document.querySelector('#community .card-container'),
+            data: [
+                 {
+                    title: '등산 동호회 '산울림'',
+                    description: '매주 주말, 서울 근교의 아름다운 산을 함께 오릅니다.',
+                    image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop',
+                    footer: '활동 지역: 서울/경기'
+                },
+                {
+                    title: ''맛있는 인생' 요리 모임',
+                    description: '나만의 특별한 레시피를 공유하고, 함께 맛있는 음식을 만들어봐요.',
+                    image: 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=80&w=2070&auto=format&fit=crop',
+                    footer: '매월 셋째 주 토요일'
+                },
+                {
+                    title: '여행 스케치',
+                    description: '그림을 그리며 여행의 감동을 두 배로! 초보자도 환영합니다.',
+                    image: 'https://images.unsplash.com/photo-1530521954074-e64f6810b32d?q=80&w=2070&auto=format&fit=crop',
+                    footer: '분기별 1회 정기 출사'
+                }
+            ]
+        },
+        market: {
+            container: document.querySelector('#market .card-container'),
+            data: [
+                {
+                    title: '유기농 채소 꾸러미',
+                    description: '제철을 맞은 신선한 유기농 채소를 집 앞까지 배송해 드립니다.',
+                    image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1974&auto=format&fit=crop',
+                    footer: '주 1회 | 25,000원'
+                },
+                {
+                    title: '국내산 제철 과일',
+                    description: '산지 직송으로 더욱 신선하고 맛있는 제철 과일을 만나보세요.',
+                    image: 'https://images.unsplash.com/photo-1594261713555-9b27a3a3a93c?q=80&w=2050&auto=format&fit=crop',
+                    footer: '상시 판매'
+                },
+                {
+                    title: '건강 보조 식품',
+                    description: '부족한 영양을 채워 활기찬 하루를 만드는 건강 보조 식품 모음.',
+                    image: 'https://images.unsplash.com/photo-1607619056574-7d8d3ee536b2?q=80&w=2146&auto=format&fit=crop',
+                    footer: '특별 할인가'
+                }
+            ]
         }
-    ];
+    };
 
-    const classesData = [
-        {
-            image: 'https://images.unsplash.com/photo-1591357989474-1e59461d56e0?q=80&w=2070&auto=format&fit=crop',
-            title: '기초 의자 요가',
-            meta: '강사: 서서히 | 45분',
-            button_text: '수강신청하기'
-        },
-        {
-            image: 'https://images.unsplash.com/photo-1596726138344-93b81152de6f?q=80&w=2070&auto=format&fit=crop',
-            title: '영상 통화 마스터하기',
-            meta: '강사: 사라 필러 | 60분',
-            button_text: '수강신청하기'
-        },
-        {
-            image: 'https://images.unsplash.com/photo-1536924940846-227afb31e2a5?q=80&w=2066&auto=format&fit=crop',
-            title: '아침 수채화 교실',
-            meta: '강사: 로버트 존슨 | 90분',
-            button_text: '수강신청하기'
+    for (const section in sections) {
+        const { container, data } = sections[section];
+        if (container) {
+            data.forEach(item => {
+                const card = document.createElement('custom-card');
+                card.setAttribute('title', item.title);
+                card.setAttribute('description', item.description);
+                card.setAttribute('image', item.image);
+                card.setAttribute('footer', item.footer);
+                container.appendChild(card);
+            });
         }
-    ];
-
-    const communityData = [
-        {
-            type: 'community',
-            image: 'https://images.unsplash.com/photo-1470071459639-91e7a57e62a9?q=80&w=2070&auto=format&fit=crop',
-            title: '오늘 남산 둘레길 같이 걸으실 분 계신가요?',
-            meta: '행복한 산책가 | 15분 전',
-            content_text: '날씨가 너무 좋아서 집에만 있기 아깝네요. 오후 2시에 국립극장 쪽에서 만나서 천천히 한 바퀴 돌고 시원한 냉면 한 그릇 하실 분들 댓글 남겨주세요!',
-        },
-        {
-            type: 'community',
-            image: 'https://images.unsplash.com/photo-1598230329432-094154b1a473?q=80&w=1964&auto=format&fit=crop',
-            title: '베란다에서 상추 키우는 꿀팁 공유합니다',
-            meta: '꽃할매 정원사 | 1시간 전',
-            content_text: '벌써 세 번째 수확했어요! 가장 중요한 건 통풍과 물주기 시간인 것 같아요. 제가 정리한 몇 가지 노하우 보시고 다들 싱싱한 상추 키워보세요.',
-        },
-    ];
-
-    const marketData = [
-        {
-            image: 'https://images.unsplash.com/photo-1568252540022-541283a3036e?q=80&w=2070&auto=format&fit=crop',
-            title: '제철 유기농 건강 채소 바구니',
-            price: '34,500원',
-            button_text: '장바구니 담기'
-        },
-        {
-            image: 'https://images.unsplash.com/photo-1541592106381-b5864ce61798?q=80&w=2070&auto=format&fit=crop',
-            title: '저염식 명란젓',
-            price: '18,900원',
-            button_text: '장바구니 담기'
-        },
-        {
-            image: 'https://images.unsplash.com/photo-1628102494296-56545213d2f7?q=80&w=1935&auto=format&fit=crop',
-            title: '오메가-3 트리플 스트렝스 (90캡슐)',
-            price: '24,000원',
-            button_text: '장바구니 담기'
-        }
-    ];
-
-    function renderCards(containerId, data) {
-        const container = document.querySelector(containerId);
-        data.forEach(item => {
-            const card = document.createElement('custom-card');
-            for (const key in item) {
-                card.setAttribute(key, item[key]);
-            }
-            container.appendChild(card);
-        });
     }
-
-    renderCards('#jobs .card-container', jobsData);
-    renderCards('#classes .card-container', classesData);
-    renderCards('#community .card-container', communityData);
-    renderCards('#market .card-container', marketData);
 });
